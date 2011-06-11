@@ -1,4 +1,13 @@
 Piupiu::Application.routes.draw do
+  root :to => "pages#index"
+  
+  devise_for :users
+  resources :users
+  
+  match "/index.html" => "pages#index"
+  match "/impressum.html" => "pages#impressum"
+  #match "/wtf.html" => "pages#wtf"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

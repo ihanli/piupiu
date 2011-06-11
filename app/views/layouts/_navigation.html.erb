@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <!-- menubar -->
+  <a class="rahmen_profilbild aktiv" href="<%= @user.id %>"></a>
+  <a class="overview_link" href="overview.html"></a>
+  <a class="new_post" href="#"></a>
+  <a class="logout" href="sign_out"></a>
+<% end %>
+<a class="wtf" href="/wtf.html"></a>
+<a class="impressum" href="/impressum.html"></a>
