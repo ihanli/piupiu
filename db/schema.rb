@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(:version => 20110611115809) do
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(:version => 20110611115809) do
     t.datetime "updated_at"
     t.string   "country"
     t.string   "ido"
+    t.datetime "reset_password_sent_at"
+    t.string   "reset_password_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
