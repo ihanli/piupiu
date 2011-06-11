@@ -1,0 +1,6 @@
+<%= render :partial => "layouts/navigation" %>
+
+<!-- content -->
+<div class="rahmen_profilbild_gross"></div>
+<div class="strichi_profil"></div>
+<%= button_to "", { :controller=>"devise/registrations", :action=>"destroy", :id => @user.id }, :method => :delete, :class => "delete_profile" %>
