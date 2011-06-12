@@ -6,14 +6,22 @@
 <a class="start_signup" href="<%= new_user_registration_path %>"></a> 
  
 <div class="login"> 
-<a class="start_login" href="<%= user_session_path %>"></a> 
+
+<a class="start_login" href="<%= root_path %>"></a> 
  
-<form class="login_feld" action="<%= user_session_path %>" method="post"> 
-    <input type="email" size="18" name="user[email]" class="feld"> 
-    <input type="password" size="18" name="user[password]" class="feld"> 
-	<input type="image" name="check" class="check" />
-	<%= link_to "", new_user_password_path, :class => "forgot_pw" %>
+<form accept-charset="UTF-8" class="login_feld" action="<%= user_session_path %>" method="post"> 
+  <div style="margin:0;padding:0;display:inline">
+    <input name="utf8" type="hidden" value="&#x2713;" />
+	<input name="authenticity_token" type="hidden" value="71GMUsaMsXB4bZzlTor4/rdBMyFINJH+3vD6FrlwVCM=" />
+  </div> 
+  <input type="email" size="18" name="user[email]" class="feld"> 
+  <input type="password" size="18" name="user[password]" class="feld"> 
+  <input type="image" name="check" class="check" />
+  <%= link_to "", new_user_password_path, :class => "forgot_pw" %>
 </form> 
-</div><!-- end login --> 
+</div><!-- end login -->
+
+<%= flash[:notice] %>
+<%= flash[:alert] %> 
  
 </div><!-- end start container --> 
