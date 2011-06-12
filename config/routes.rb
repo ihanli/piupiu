@@ -1,7 +1,10 @@
 Piupiu::Application.routes.draw do
   root :to => "pages#index"
-  
-  devise_for :users
+
+  devise_for :users do
+    match "users" => "users#index", :as => :user_root
+  end
+
   resources :users
   
   match "/index.html" => "pages#index"
