@@ -1,8 +1,9 @@
 Piupiu::Application.routes.draw do
   root :to => "pages#index"
-
+ 
   devise_for :users do
-    match "users" => "users#index", :as => :user_root
+    delete "users/:id" => "registrations#destroy"
+    get "/users" => "users#index", :as => :user_root
   end
 
   resources :users
