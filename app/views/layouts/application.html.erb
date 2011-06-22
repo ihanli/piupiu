@@ -14,6 +14,16 @@
 <div class="balken unten"></div>
 <div class="piupiu"></div>
 
+<% if user_signed_in? and !current_page?(:controller => "high_voltage/pages", :action => "show", :id => "index")%>
+  <!-- menubar -->
+  <%= link_to "", user_root_path, :class => current_page?(:controller => user_root_path) ? ["rahmen_profilbild","aktiv"] : "rahmen_profilbild" %>
+  <%= link_to "", "/overview.html", :class => "overview_link" %>
+  <%= link_to "", "#", :class => "new_post" %>
+  <%= link_to "", destroy_user_session_path, :class => "logout" %>
+<% end %>
+<%= link_to "", page_path("wtf"), :class => current_page?(:controller => "high_voltage/pages", :action => "show", :id => "wtf") ? ["wtf","aktiv"] : "wtf" %>
+<%= link_to "", page_path("impressum"), :class => current_page?(:controller => "high_voltage/pages", :action => "show", :id => "impressum") ? ["impressum","aktiv"] : "impressum" %>
+
 <%= yield %>
 
 </body>

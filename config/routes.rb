@@ -1,16 +1,13 @@
 Piupiu::Application.routes.draw do
-  root :to => "pages#index"
+  root :to => "high_voltage/pages#show", :id => "index"
  
   devise_for :users do
     delete "users/:id" => "registrations#destroy"
     get "/users" => "users#index", :as => :user_root
+    get "/users/sign_in" => redirect("/")
   end
 
   resources :users
-  
-  match "/index.html" => "pages#index"
-  match "/impressum.html" => "pages#impressum"
-  match "/wtf.html" => "pages#wtf"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
