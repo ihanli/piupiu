@@ -2,23 +2,19 @@
  
 <div class="start_container"> 
  
-<a class="start_wtf" href="/wtf.html"></a> 
-<a class="start_signup" href="<%= new_user_registration_path %>"></a> 
+<%= link_to "", page_path("wtf"), :class => "start_wtf" %>
+<%= link_to "", new_user_registration_path, :class => "start_signup" %>
  
 <div class="login"> 
 
-<a class="start_login" href="<%= root_path %>"></a> 
- 
-<form accept-charset="UTF-8" class="login_feld" action="<%= user_session_path %>" method="post"> 
-  <div style="margin:0;padding:0;display:inline">
-    <input name="utf8" type="hidden" value="&#x2713;" />
-	<input name="authenticity_token" type="hidden" value="71GMUsaMsXB4bZzlTor4/rdBMyFINJH+3vD6FrlwVCM=" />
-  </div> 
-  <input type="email" size="18" name="user[email]" class="feld"> 
-  <input type="password" size="18" name="user[password]" class="feld"> 
-  <input type="image" name="check" class="check" />
+<%= link_to "", user_root_path, :class => "start_login" %>
+
+<%= form_for :user, :as => :user, :url => user_session_path, :html => { :class => "login_feld" } do |f| %>
+  <%= f.email_field :email, :size => "18", :class => "feld" %>
+  <%= f.password_field :password, :size => "18", :class => "feld" %>
+  <%= submit_tag "", :class => "check" %>
   <%= link_to "", new_user_password_path, :class => "forgot_pw" %>
-</form> 
+<% end %>
 </div><!-- end login -->
 
 <%= flash[:notice] %>

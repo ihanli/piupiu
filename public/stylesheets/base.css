@@ -226,6 +226,8 @@ a:active{
 }
 .check{
 	background-image:url(../images/check-07.png);
+	background-color:#FFFFFF;
+    border:none;
 	cursor:pointer;
 	width:25px;
 	height:25px;
@@ -667,6 +669,8 @@ a:active{
 }
 .delete_profile{
 	background-image:url(../images/delete_profile-02.png);
+	background-color:#FFFFFF;
+    border:none;
 	cursor:pointer;
 	position:absolute;
 	width:80px;
