@@ -1,12 +1,9 @@
-<h2>Forgot your password?</h2>
+<div class="forgot_pw_container">
+	<%= image_tag "enter_mail-16.png" %>
+	
+	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => "enter_mail" }) do |f| %>
+		<%= f.email_field :email, :size => 20, :class => "feld" %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.submit "Send me reset password instructions" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+		<%= f.submit "", :class => "submit_mail" %>
+	<% end %>
+</div>

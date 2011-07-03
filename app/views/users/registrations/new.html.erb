@@ -1,26 +1,10 @@
-<div class="master">
-<!-- Layout -->
-<div class="balken oben"></div>
-
-<div class="piupiu"></div>
-
-<!-- menubar -->
-<% if user_signed_in? %>
-  <a class="rahmen_profilbild" href="profil.html"></a>
-  <a class="overview_link" href="overview.html"></a>
-  <a class="new_post" href="new_post.html"></a>
-  <a class="logout" href="index.html"></a>
-<% end %>
-<a class="wtf" href="/wtf.html"></a>
-<a class="impressum" href="/impressum.html"></a>
-
 <!-- content-->
 <div class="content">
 
 <div class="text">
 <h1>sign up</h1><br /><br />
 
-If you want to know what you are signing up for: <a href="/wtf.html">wtf?</a> <br />
+If you want to know what you are signing up for: <%= link_to "wtf?", page_path("wtf") %> <br />
 If your already know...just sign up ;)
 <br /><br /><br />
 
@@ -51,14 +35,9 @@ If your already know...just sign up ;)
   Your profile picture has to be drawn into following field. It will be your identity on our site, because there are no nicknames.<br /><br />
   <canvas datasrc="/processing/zeichentoolpiupiu.pde" class="zeichentool"></canvas>
 
-  <%= f.submit "", :type => :image, :class => "submit" %>
+  <%= f.submit "", :class => "submit" %>
   <a class="reset_processing" href="#"></a>
 <% end %>
 
 </div><!-- end text div -->
-
-<br />
-<div class="balken unten_relative"></div>
 </div><!-- end content -->
-
-</div><!-- end master -->

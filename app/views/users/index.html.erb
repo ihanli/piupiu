@@ -2,6 +2,6 @@
 <div class="rahmen_profilbild_gross"></div>
 <div class="strichi_profil"></div>
 
-<%= form_for :user, :as => :user, :url => "/users?id=#{current_user.id}", :html => { :method => :delete } do |f| %>
-  <%= submit_tag "", :class => "delete_profile" %>
-<% end %>
+<%= link_to "", page_path("delete_profile"), { :class => "delete_profile" } %>
+<%= link_to "", edit_user_registration_path, { :class => "change_pic" } %>
+<%= link_to "", edit_user_registration_path, { :class => "change_pw" } %>
