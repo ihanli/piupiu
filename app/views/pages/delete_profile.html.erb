@@ -1,0 +1,6 @@
+<%= form_for :user, :as => :user, :url => "/users?id=#{current_user.id}", :html => { :method => :delete, :class => "text" } do |f| %>
+  <%= f.submit "", :class => "thumb_up" %>
+  <%= link_to "", user_root_path, :class => "thumb_down" %>
+<% end %>
+
+<%= image_tag "delete_profile_illu-13.png", :class => "delete_profile_illu" %>
