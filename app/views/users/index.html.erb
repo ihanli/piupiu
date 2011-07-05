@@ -1,5 +1,5 @@
 <!-- content -->
-<div class="rahmen_profilbild_gross"></div>
+<div class="rahmen_profilbild_gross"><%= image_tag current_user.avatar.url(:thumb) %></div>
 <div class="strichi_profil"></div>
 
 <%= link_to "", page_path("delete_profile"), { :class => "delete_profile" } %>

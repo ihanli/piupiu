@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110611115809) do
+ActiveRecord::Schema.define(:version => 20110704124324) do
+
+  create_table "posts", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -24,6 +36,10 @@ ActiveRecord::Schema.define(:version => 20110611115809) do
     t.string   "ido"
     t.datetime "reset_password_sent_at"
     t.string   "reset_password_token"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

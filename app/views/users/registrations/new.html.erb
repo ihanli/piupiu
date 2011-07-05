@@ -8,7 +8,7 @@ If you want to know what you are signing up for: <%= link_to "wtf?", page_path("
 If your already know...just sign up ;)
 <br /><br /><br />
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => "signupform"}) do |f| %> 
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => "signupform", :multipart => true}) do |f| %> 
   <table>
     <tr>
       <td width="130">mail</td>
@@ -33,11 +33,25 @@ If your already know...just sign up ;)
   </table>
   <br /><br />
   Your profile picture has to be drawn into following field. It will be your identity on our site, because there are no nicknames.<br /><br />
-  <canvas datasrc="/processing/zeichentoolpiupiu.pde" class="zeichentool"></canvas>
+  <canvas datasrc="/processing/zeichentoolpiupiu.pde" id="zeichentool"></canvas>
 
   <%= f.submit "", :class => "submit" %>
-  <a class="reset_processing" href="#"></a>
+  <%= link_to_function "", "document.getElementById('zeichentool').getContext('2d').clearRect(0,0,330,240); return false;", :class => "reset_processing" %>
+  <%= f.hidden_field :image_data %>
 <% end %>
 
 </div><!-- end text div -->
 </div><!-- end content -->
+
+<script type="text/javascript">
+	$(window).load(function(){
+		var canvas = document.getElementById("zeichentool");
+		
+		
+		
+		$("#signupform").submit(function() {
+			$("#user_image_data").val(canvas.toDataURL().substring(22));
+			return true;
+		});
+	});
+</script>
