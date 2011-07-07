@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :validatable, :confirmable, :timeoutable
   has_attached_file :avatar, :default_style => :thumb, :styles => { :thumb => "203x147"}
-  attr_accessor :image_data
   before_save :decode_image_data, :if => :image_data_provided?
-
+  
+  has_many :posts
+  
+  attr_accessor :image_data
   attr_accessible :email, :password, :password_confirmation, :country, :ido, :avatar, :image_data
   
   private

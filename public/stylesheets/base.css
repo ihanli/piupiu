@@ -883,6 +883,8 @@ a:active{
 	overflow:hidden;
 	left:0px;
 	top:0px;
+	background-color:#FFF;
+	border:none;
 }
 .durchsuchen:hover{
 	background-position: 0px 70px;
@@ -896,6 +898,8 @@ a:active{
 	overflow:hidden;
 	left:90px;
 	top:0px;
+	background-color:#FFF;
+	border:none;
 }
 .submit_new_post:hover{
 	background-position: 0px 70px;

@@ -10,19 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110704124324) do
+ActiveRecord::Schema.define(:version => 20110705095235) do
 
   create_table "posts", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
+    t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "ancestry"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "posts", ["ancestry"], :name => "index_posts_on_ancestry"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

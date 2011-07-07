@@ -7,5 +7,7 @@ Piupiu::Application.routes.draw do
     get "users/sign_in" => redirect("/")
   end
 
-  resources :users
+  resources :users do
+    resources :posts
+  end
 end
