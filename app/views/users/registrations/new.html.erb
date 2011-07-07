@@ -36,7 +36,7 @@ If your already know...just sign up ;)
   <canvas datasrc="/processing/zeichentoolpiupiu.pde" id="zeichentool"></canvas>
 
   <%= f.submit "", :class => "submit" %>
-  <%= link_to_function "", "document.getElementById('zeichentool').getContext('2d').clearRect(0,0,330,240); return false;", :class => "reset_processing" %>
+  <%= link_to_function "", "document.getElementById('zeichentool').getContext('2d').clearRect(0,0,330,240)", :class => "reset_processing" %>
   <%= f.hidden_field :image_data %>
 <% end %>
 
@@ -46,8 +46,6 @@ If your already know...just sign up ;)
 <script type="text/javascript">
 	$(window).load(function(){
 		var canvas = document.getElementById("zeichentool");
-		
-		
 		
 		$("#signupform").submit(function() {
 			$("#user_image_data").val(canvas.toDataURL().substring(22));
