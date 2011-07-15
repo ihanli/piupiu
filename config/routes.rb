@@ -8,6 +8,9 @@ Piupiu::Application.routes.draw do
   end
 
   resources :users do
-    resources :posts
+    resources :posts do
+      get "comment" => "posts#comment"
+      get "download" => "posts#download"
+    end
   end
 end

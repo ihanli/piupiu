@@ -46,9 +46,7 @@ If your already know...just sign up ;)
 <script type="text/javascript">
 	$(window).load(function(){
 		var canvas = document.getElementById("zeichentool");
-		
-		
-		
+
 		$("#signupform").submit(function() {
 			$("#user_image_data").val(canvas.toDataURL().substring(22));
 			return true;

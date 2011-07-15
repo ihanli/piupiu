@@ -1,0 +1,13 @@
+<div class="container_pic">
+	<%= image_tag @node.image.url(:medium), :class => "big_pic" %>
+</div>
+
+<%= form_for([:user, @post], :html => { :id => "comment_post", :class => " ", :multipart => "true" }) do |f| %>
+	<%= f.file_field :image, :style => "visibility:hidden" %>
+	<%= button_to_function "", "$('#post_image').trigger('click')", :class => "upload" %>
+	<%= f.submit "", :class => "submit_popup" %>
+	<%= f.hidden_field :ancestry, :value => @node.id %>
+<% end %>
+
+<%= button_to "", { :action => "download" }, :method => "get", :class => "download" %>
+<%= button_to "", { :action => "destroy", :id => @node.id }, :method => "delete", :class => "delete_pic" %>

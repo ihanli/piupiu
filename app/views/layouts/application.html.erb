@@ -4,14 +4,19 @@
   <title>piu piu</title>
   <link rel="icon" href="/images/favicon_piupiu-01.png" type="image/ico" />
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :all %>
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "processing-1.1.0" %>
+  <%= javascript_include_tag "raphael-min" %>
+  <%= javascript_include_tag "facebox" %>
+  <%= javascript_include_tag "CommunicationNode" %>
+  <%= javascript_include_tag "CommunicationMap" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
 <!-- Layout -->
-<div class="balken oben"></div>
-<div class="balken unten"></div>
+<div id="balken_oben" class="balken oben"></div>
+<div id="balken_unten" class="balken unten"></div>
 <%= link_to "", root_path, { :class => "piupiu" } %>
 
 <% if user_signed_in? and !current_page?(:controller => "high_voltage/pages", :action => "show", :id => "index")%>

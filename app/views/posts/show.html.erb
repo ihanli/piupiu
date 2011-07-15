@@ -1,0 +1,44 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		map = new CommunicationMap();
+		startPos = {x:0,y:0};
+
+		$("#canvas").mousedown(function(e){
+			startPos.x = e.pageX;
+			startPos.y = e.pageY;
+			map.start();
+
+			$("#canvas").mousemove(function(e){
+				map.move(e.pageX - startPos.x, e.pageY - startPos.y);
+			});
+		});
+		
+		$("body").mouseup(function(e){
+			$("#canvas").unbind("mousemove");
+		});
+		
+		$("#canvas").mouseleave(function(e){
+			$("#canvas").unbind("mousemove");
+		});
+		
+		$.getJSON("/users/<%= current_user.id %>/posts/<%= @tree.root.id %>",
+		{
+			format: "json"
+		},
+		function(data) {
+			map.render(data);
+		});
+		
+		$("a[rel*=facebox]").facebox({
+			loadingImage : "/images/loading.gif",
+			closeImage   : "/images/closelabel.png"
+		});
+	});
+</script>
+
+<div id="canvas"></div>
+
+<%= link_to "", "/users/#{current_user.id}/posts/", :rel => "facebox", :id => "popup" %>
+
+<%= link_to_function "", "map.zoomIn()", :class => "plus_zoom" %>
+<%= link_to_function "", "map.zoomOut()", :class => "minus_zoom" %>

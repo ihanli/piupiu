@@ -6,5 +6,17 @@ class Post < ActiveRecord::Base
   
   belongs_to :user
   
-  attr_accessible :image, :user
+  attr_accessible :image, :user, :ancestry
+  
+  def to_node
+    geo = Paperclip::Geometry.from_file(image.to_file(:medium))
+    
+    { 
+      "id" => self.id,
+      "url" => self.image.url(:medium),
+      "width" => geo.width,
+      "height" => geo.height,
+      "comments"   => self.children.map { |c| c.to_node }
+    }
+  end
 end
