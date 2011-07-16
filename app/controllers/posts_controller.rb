@@ -20,13 +20,18 @@ class PostsController < ApplicationController
     
     if params[:post][:ancestry]
       parent = Post.find_by_id(params[:post][:ancestry]) 
-      post.ancestry = "#{parent.ancestry}/#{parent.id}"
+      
+      unless parent.is_root?
+        post.ancestry = "#{parent.ancestry}/#{parent.id}"
+      else
+        post.ancestry = parent.id.to_s
+      end
     end
     
     if post.save
-      redirect_to user_post_path(current_user.id, post.root.id)
+      redirect_to post_path(post.root.id)
     else
-      redirect_to new_user_post_path(current_user.id)
+      redirect_to new_post_path
     end
   end
   

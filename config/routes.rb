@@ -7,10 +7,10 @@ Piupiu::Application.routes.draw do
     get "users/sign_in" => redirect("/")
   end
 
-  resources :users do
-    resources :posts do
-      get "comment" => "posts#comment"
-      get "download" => "posts#download"
-    end
+  resources :users
+  
+  resources :posts do
+    get "comment" => "posts#comment"
+    get "download" => "posts#download"
   end
 end

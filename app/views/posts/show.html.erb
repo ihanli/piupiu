@@ -21,7 +21,7 @@
 			$("#canvas").unbind("mousemove");
 		});
 		
-		$.getJSON("/users/<%= current_user.id %>/posts/<%= @tree.root.id %>",
+		$.getJSON("/posts/<%= @tree.root.id %>",
 		{
 			format: "json"
 		},
@@ -38,7 +38,7 @@
 
 <div id="canvas"></div>
 
-<%= link_to "", "/users/#{current_user.id}/posts/", :rel => "facebox", :id => "popup" %>
+<%= link_to "", "/posts/", :rel => "facebox", :id => "popup" %>
 
 <%= link_to_function "", "map.zoomIn()", :class => "plus_zoom" %>
 <%= link_to_function "", "map.zoomOut()", :class => "minus_zoom" %>
