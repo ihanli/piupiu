@@ -1,0 +1,13 @@
+<!-- untermenu -->
+<%= link_to "", posts_path(:sort_by => "created_at", :order => "DESC"), :class => "new_old" %>
+<%= link_to "", posts_path(:sort_by => "created_at", :order => "ASC"), :class => "old_new" %>
+<%= link_to "", posts_path(:sort_by => "node_count", :order => "DESC"), :class => "big_small" %>
+<%= link_to "", posts_path(:sort_by => "node_count", :order => "ASC"), :class => "small_big" %>
+
+<div class="bsp_komm">
+<% @trees.each do |tree| %>
+	<a href=<%= "#{post_path(tree.id)}" %>><div>
+		<%= image_tag tree.image.url(:medium) %>
+	</div></a>
+<% end %>
+</div>

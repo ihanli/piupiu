@@ -3,6 +3,7 @@ Piupiu::Application.routes.draw do
  
   devise_for :users, :controllers => { :registrations => "registrations", :passwords => "passwords" } do
     delete "users/:id" => "registrations#destroy"
+    get "users/sign_up" => "registrations#new"
     get "users" => "users#index", :as => :user_root
     get "users/sign_in" => redirect("/")
   end

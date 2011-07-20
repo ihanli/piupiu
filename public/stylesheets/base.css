@@ -85,6 +85,20 @@ a:active{
 	margin-right:40%;
 }
 
+.text2{
+	position:relative;
+	margin-top:130px;
+	margin-left:80px;
+	width:400px;
+}
+
+.textklein{
+	font-size:10px;
+}
+
+
+
+
 
 
 
@@ -749,8 +763,8 @@ a:active{
 	position:absolute;
 	top:200px;
 	left:80px;
-	width:150px;
-	height:150px;
+	/*width:150px;
+	height:150px;*/
 }
 .profilbilder_overlay{
 	position:absolute;
@@ -790,41 +804,50 @@ a:active{
 	max-width:100%;
 }
 
+.fehler_pic_02{
+	position:absolute;
+	width:302px;
+	height:232px;
+	margin:-116px 0px 0px -151px;
+	top:50%;
+	left:50%;
+}
+
 
 
 /*profil löschen*/
 
 .thumb_up{
-	background-image:url(../images/thumb_up-02.png);
+	background-image:url(../images/thumb_up-03.png);
 	cursor:pointer;
 	position:absolute;
-	width:80px;
-	height:70px;
+	width:150px;
+	height:150px;
 	overflow:hidden;
-	top:0px;
-	left:10px;
+	top:180px;
+	left:300px;
 	background-color:#FFF;
 	border:none;
 }
 .thumb_up:hover{
-	background-position: 0px 70px;
+	background-position: 0px 150px;
 }.thumb_down{
-	background-image:url(../images/thumb_down-02.png);
+	background-image:url(../images/thumb_down-03.png);
 	cursor:pointer;
 	position:absolute;
-	width:80px;
-	height:70px;
+	width:150px;
+	height:150px;
 	overflow:hidden;
-	top:0px;
-	left:50px;
+	top:180px;
+	left:430px;
 }
 .thumb_down:hover{
-	background-position: 0px 70px;
+	background-position: 0px 150px;
 }
 
 .delete_profile_illu{
 	position:absolute;
-	right:0px;
+	left:20px;
 	top:100px;
 }
 
@@ -912,6 +935,99 @@ a:active{
 .submit_new_post:hover{
 	background-position: 0px 70px;
 }
+
+/*zusatzillus auf textseiten*/
+
+.illus{
+	position:absolute;
+	top:40px;
+	left:480px;
+}
+
+
+/*startseite mit countdown*/
+
+#countdown{
+	position:absolute;
+	width:300px;
+	height:40px;
+	margin:-25px 0px 0px -150px;
+	top:50%;
+	left:40%;
+	font-size:35px;
+	text-align:center;
+	background-color:#FFF;
+	z-index:20;
+	padding-top:12px;
+}
+
+.working_piu{
+	position:absolute;
+	width:201px;
+	height:401px;
+	bottom:30px;
+	left:100px;
+}
+
+.info{
+	position:absolute;
+	width:346px;
+	height:86px;
+	top:0px;
+	right:40px;
+}
+
+.infotext_container{
+	position:absolute;
+	height:465px;
+	width:346px;
+	top:0px;
+	right:53px;
+	padding-left:70px;
+	padding-top:30px;
+	margin-top:-370px;
+	color:#FFF;
+	/*background-image:url(../img/info-20.png);*/
+	background-image:url(../img/infogross-22.png);
+	background-position:top;
+	background-repeat:no-repeat;
+	z-index:10;
+}
+
+.infotext_container:hover{
+	color:#000;
+	margin-top:0px;	
+}
+
+.infotext{
+	width:280px;
+}
+
+.facebook_buch{
+	background-image:url(../img/facebook-23.png);
+	position:absolute;
+	height:81px;
+	width:71px;
+	bottom:10px;
+	right:50px;
+	z-index:20;
+}
+.facebook_buch:hover{
+	background-position: 0px 81px;
+}
+
+.strich_boden{
+	background-image:url(../img/strichi_profil-11.png);
+	background-position:center center;
+	background-repeat:no-repeat;
+	width:100%;
+	height:30px;
+	bottom:20px;
+	position:absolute;
+	z-index:10;
+}
+
+
 #canvas{
 	position:absolute;
 	cursor:move;
@@ -922,5 +1038,8 @@ a:active{
 	left:0px;
 	width:100%;
 	height:100%;
+}
+.bsp_komm div{
+	float:left;
 }
 

@@ -3,7 +3,6 @@
 	
 	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => "enter_mail" }) do |f| %>
 		<%= f.email_field :email, :size => 20, :class => "feld" %>
-
 		<%= f.submit "", :class => "submit_mail" %>
 	<% end %>
 </div>

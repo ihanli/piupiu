@@ -1,5 +1,5 @@
 <div class="container_pic">
-	<%= image_tag @node.image.url(:medium), :class => "big_pic" %>
+	<%= image_tag @node.image.url(:original), :class => "big_pic" %>
 </div>
 
 <%= form_for @post, :html => { :id => "comment_post", :class => " ", :multipart => "true" } do |f| %>

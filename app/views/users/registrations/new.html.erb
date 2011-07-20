@@ -12,27 +12,34 @@ If your already know...just sign up ;)
   <table>
     <tr>
       <td width="130">mail</td>
-      <td><%= f.email_field :email, :size => 20, :class => "feld" %></td>
+      <td><%= f.email_field :email, :size => 39, :class => "feld" %></td>
     </tr>
     <tr>
       <td>password</td>
-      <td><%= f.password_field :password, :size => 20, :class => "feld" %></td>
+      <td><%= f.password_field :password, :size => 39, :class => "feld" %></td>
     </tr>
     <tr>
       <td>repeat password</td>
-      <td><%= f.password_field :password_confirmation, :size => 20, :class => "feld" %></td>
+      <td><%= f.password_field :password_confirmation, :size => 39, :class => "feld" %></td>
     </tr>
     <tr>
       <td>country</td>
-	  <td><%= f.text_field :country, :size => 20, :class => "feld" %></td>
+	  <td><%= f.select(:country, options_for_select(@countries_array, "  ")) %>
     </tr>
     <tr>
       <td>what i do</td>
-      <td><%= f.text_field :ido, :size => 20, :class => "feld" %></td>
+      <td><%= f.text_field :ido, :size => 39, :class => "feld" %></td>
     </tr>  
   </table>
+  <br />
+  <span class="textklein">
+    The information about your homecountry and what you do are not necessary. We are just curious who you are. ;) <br />
+	Every information you are giving us is not beeing used for anything than the piupiu comunity.
+  </span>
   <br /><br />
-  Your profile picture has to be drawn into following field. It will be your identity on our site, because there are no nicknames.<br /><br />
+  <br />
+  
+  Your profile picture has to be drawn into following field. <br /> It will be your identity on our site, because there are no nicknames.<br /><br />
   <canvas datasrc="/processing/zeichentoolpiupiu.pde" id="zeichentool"></canvas>
 
   <%= f.submit "", :class => "submit" %>

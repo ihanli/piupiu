@@ -5,7 +5,14 @@
 <%= link_to "", page_path("wtf"), :class => "start_wtf" %>
 <%= link_to "", new_user_registration_path, :class => "start_signup" %>
 
-<%= image_tag "pw_falsch-17.png", :class => "pw_wrong" if flash[:alert] == I18n.t("devise.failure.invalid") %>
+<% if flash[:alert] == I18n.t("devise.failure.invalid") %>
+	<%= image_tag "pw_falsch-17.png", :class => "pw_wrong" %>
+<% elsif flash[:alert] == I18n.t("devise.failure.timeout") %>
+	<% redirect pages("timeout") %>
+<% else %>
+	<%= flash[:alert] %> 
+<% end %>
+
 <div class="login"> 
 
 <%= link_to "", user_root_path, :class => "start_login" %>
@@ -17,8 +24,5 @@
   <%= link_to "", new_user_password_path, :class => "forgot_pw" %>
 <% end %>
 </div><!-- end login -->
-
-
-<%= flash[:alert] %> 
  
 </div><!-- end start container --> 

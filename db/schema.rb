@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110705095235) do
+ActiveRecord::Schema.define(:version => 20110720110245) do
+
+  create_table "countries", :force => true do |t|
+    t.string   "fullname"
+    t.string   "abbreviation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"

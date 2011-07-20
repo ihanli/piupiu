@@ -1,11 +1,20 @@
-function CommunicationMap()
+function CommunicationMap(canvas)
 {
-	var top = $("#balken_oben").offset().top + $("#balken_oben").height();
-	var height = $("#balken_unten").offset().top - top;
-
-	$("#canvas").css({"top":top,"left":"0"});
+	var top, height, paper;
 	
-	var paper = Raphael("canvas", $(".plus_zoom").offset().left, height);
+	if(!canvas)
+	{
+		top = $("#balken_oben").offset().top + $("#balken_oben").height();
+		height = $("#balken_unten").offset().top - top;
+
+		$("#canvas").css({"top":top,"left":"0"});
+		
+		paper = Raphael("canvas", $(".plus_zoom").offset().left, height);
+	}
+	else
+	{
+		// paper = Raphael(canvas);
+	}
 	
 	var nodeSet = paper.set();
 	var edgeSet = paper.set();
