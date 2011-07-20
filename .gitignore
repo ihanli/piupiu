@@ -7,4 +7,3 @@ config/mailers.yml
 config/initializers/paperclip.rb
 config/initializers/secret_token.rb
 public/system/
-Gemfile.lock
