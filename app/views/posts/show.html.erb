@@ -21,6 +21,10 @@
 			$("#canvas").unbind("mousemove");
 		});
 		
+		$("#canvas").mousewheel(function(objEvent, intDelta){
+			intDelta > 0 ? map.zoomIn() : map.zoomOut();
+		});
+		
 		$.getJSON("/posts/<%= @tree.root.id %>",
 		{
 			format: "json"
