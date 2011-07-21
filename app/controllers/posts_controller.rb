@@ -48,7 +48,7 @@ class PostsController < ApplicationController
     if post.save
       redirect_to post_path(post.root.id)
     else
-      redirect_to new_post_path
+      redirect_to page_path("500") and return
     end
   end
   
