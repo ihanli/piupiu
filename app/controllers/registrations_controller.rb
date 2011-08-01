@@ -34,9 +34,21 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
   
+  # DELETE /resource
+  def destroy
+    resource.destroy
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message :notice, :destroyed if is_navigational_format?
+    respond_with_navigational(resource){ redirect_to after_delete_account_path_for(resource_name) }
+  end
+  
   protected
 
   def after_inactive_sign_up_path_for(resource)
     page_path("check_mail")
+  end
+  
+  def after_delete_account_path_for(resource)
+    page_path("profile_deleted")
   end
 end
