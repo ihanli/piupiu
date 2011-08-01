@@ -3,6 +3,16 @@ class CustomFailure < Devise::FailureApp
     root_path
   end
 
+  def redirect
+    message = warden.message || warden_options[:message]
+
+    if message == :timeout
+      redirect_to page_path("timeout")
+    else 
+      super
+    end 
+  end
+
   def respond
     if http_auth?
       http_auth

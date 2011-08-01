@@ -6,9 +6,7 @@
 <%= link_to "", new_user_registration_path, :class => "start_signup" %>
 
 <% if flash[:alert] == I18n.t("devise.failure.invalid") %>
-	<%= image_tag "pw_falsch-17.png", :class => "pw_wrong" %>
-<% elsif flash[:alert] == I18n.t("devise.failure.timeout") %>
-	<% redirect pages("timeout") %>
+	<%= image_tag "pw_falsch-17.png", :class => "pw_wrong" %>	
 <% else %>
 	<%= flash[:alert] %> 
 <% end %>
