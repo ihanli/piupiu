@@ -1,0 +1,5 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "container_new_post", :multipart => "true" }) do |f| %>
+	<%= f.file_field :avatar, :style => "visibility:hidden" %>
+	<%= button_to_function "", "$('#user_avatar').trigger('click'); return true", :class => "durchsuchen" %>
+	<%= f.submit "", :class => "submit_new_post" %>
+<% end %>

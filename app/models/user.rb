@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :posts
   
   attr_accessor :image_data
-  attr_accessible :email, :password, :password_confirmation, :country, :ido, :avatar, :image_data
+  attr_accessible :email, :password, :password_confirmation, :reset_password_token, :country, :ido, :avatar, :image_data
   
   private
 

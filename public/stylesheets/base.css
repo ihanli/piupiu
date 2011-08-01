@@ -875,8 +875,8 @@ a:active{
 	width:80px;
 	height:70px;
 	overflow:hidden;
-	left:237px;
-	top:87px;
+	left:70px;
+	top:40px;
 	background-color:#FFF;
 	border:none;
 }
@@ -899,9 +899,9 @@ a:active{
 
 .container_new_post{
 	position:absolute;
-	width:170px;
-	height:81px;
-	margin:-40px 0px 0px -85px;
+	width:200px;
+	height:250px;
+	margin:-125px 0px 0px -85px;
 	top:50%;
 	left:50%;
 }
@@ -913,7 +913,7 @@ a:active{
 	height:70px;
 	overflow:hidden;
 	left:0px;
-	top:0px;
+	top:170px;
 	background-color:#FFF;
 	border:none;
 }
@@ -928,13 +928,38 @@ a:active{
 	height:70px;
 	overflow:hidden;
 	left:90px;
-	top:0px;
+	top:170px;
 	background-color:#FFF;
 	border:none;
 }
 .submit_new_post:hover{
 	background-position: 0px 70px;
 }
+
+.hochladebild{
+	height: 150px;
+	width: 200px;
+	border:solid thin black;
+	visibility:hidden;
+}
+
+/*passwort und bild ändern*/
+
+.container_change_pw{
+	position:absolute;
+	width:300px;
+	height:150px;
+	margin:-75px 0px 0px -150px;
+	top:50%;
+	left:50%;
+}
+
+#pw_aendern td{
+	height:50px;
+	vertical-align:middle;
+}
+
+
 
 /*zusatzillus auf textseiten*/
 

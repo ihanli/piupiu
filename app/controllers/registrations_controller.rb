@@ -5,6 +5,35 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
   
+  def edit
+    if params[:page] == "pw"
+      render "users/registrations/password"
+    elsif params[:page] == "avatar"
+      render "users/registrations/avatar"
+    else
+      redirect_to page_path("404") and return
+    end
+  end
+  
+  def update
+    avatar_changed = true if params[resource_name][:avatar]
+    
+    if avatar_changed
+      flag = resource.update_attributes(params[resource_name])
+    else
+      flag = resource.update_with_password(params[resource_name])
+    end
+    
+    if flag
+      set_flash_message :notice, :updated
+      sign_in resource_name, resource, :bypass => true
+      redirect_to after_update_path_for(resource)
+    else
+      clean_up_passwords(resource)
+      redirect_to page_path("500") and return
+    end
+  end
+  
   protected
 
   def after_inactive_sign_up_path_for(resource)
