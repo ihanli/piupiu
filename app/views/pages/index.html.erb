@@ -16,7 +16,7 @@
 <%= link_to "", user_root_path, :class => "start_login" %>
 
 <%= form_for :user, :as => :user, :url => user_session_path, :html => { :class => "login_feld" } do |f| %>
-  <%= f.email_field :email, :size => "18", :class => "feld" %>
+  <%= f.text_field :email, :size => "18", :class => "feld" %>
   <%= f.password_field :password, :size => "18", :class => "feld" %>
   <%= f.submit "", :class => "check" %>
   <%= link_to "", new_user_password_path, :class => "forgot_pw" %>
