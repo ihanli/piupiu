@@ -1,9 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  def new
-    @countries_array = Country.all.map { |country| [country.fullname, country.abbreviation] }
-    redirect_to page_path("500") and return unless @countries_array.count > 0
-    super
-  end
+  before_filter :get_countries_array, :only => [:new, :create]
   
   def edit
     if params[:page] == "pw"
@@ -14,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to page_path("404") and return
     end
   end
-  
+
   def update
     avatar_changed = true if params[resource_name][:avatar]
     
@@ -33,8 +29,7 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to page_path("500") and return
     end
   end
-  
-  # DELETE /resource
+
   def destroy
     resource.destroy
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
@@ -50,5 +45,10 @@ class RegistrationsController < Devise::RegistrationsController
   
   def after_delete_account_path_for(resource)
     page_path("profile_deleted")
+  end
+  
+  def get_countries_array
+    @countries_array = Country.all.map { |country| [country.fullname, country.abbreviation] }
+    redirect_to page_path("500") and return unless @countries_array.count > 0
   end
 end

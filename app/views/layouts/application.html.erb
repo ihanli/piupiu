@@ -19,7 +19,7 @@
 <%= content_tag :div, "", :id => "balken_oben", :class => ["balken","oben"] %>
 <%= link_to "", root_path, { :class => "piupiu" } %>
 
-<% if user_signed_in? and !current_page?(:controller => "high_voltage/pages", :action => "show", :id => "index")%>
+<% if user_signed_in? and !current_page?(:controller => "high_voltage/pages", :action => "show", :id => "index") %>
   <!-- menubar -->
   <%= link_to "", user_root_path, :class => current_page?(:controller => user_root_path, :action => "index") ? ["rahmen_profilbild","aktiv"] : "rahmen_profilbild" %>
   <%= link_to "", posts_path, :class => current_page?(:controller => "/posts", :action => "index") ? ["overview_link","aktiv"] : "overview_link" %>
@@ -31,7 +31,11 @@
 
 <%= yield %>
 
-<%= content_tag :div, "", :id => "balken_unten", :class => current_page?(:controller => "/registrations", :action => "new") ? ["balken","unten_relative"] : ["balken","unten"] %>
+<% if controller.controller_name == "registrations" and (controller.action_name == "new" or controller.action_name == "create") %>
+	<%= content_tag :div, "", :id => "balken_unten", :class => "balken unten_relative" %>
+<% else %>
+	<%= content_tag :div, "", :id => "balken_unten", :class => "balken unten" %>
+<% end %>
  
 </body>
 </html>
