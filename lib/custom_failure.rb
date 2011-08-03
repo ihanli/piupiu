@@ -6,8 +6,8 @@ class CustomFailure < Devise::FailureApp
   def redirect
     message = warden.message || warden_options[:message]
 
-    if message == :timeout
-      redirect_to page_path("timeout")
+    if message == :timeout || message == :unauthenticated || !message
+      redirect_to page_path("signin")
     else 
       super
     end 
