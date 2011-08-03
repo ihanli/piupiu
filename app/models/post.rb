@@ -19,4 +19,12 @@ class Post < ActiveRecord::Base
       "comments"   => self.children.map { |c| c.to_node }
     }
   end
+  
+  def replace_image_with(filename)
+    data = File.open(filename, "r")
+    data.class.class_eval { attr_accessor :original_filename, :content_type }
+    data.original_filename = "grabstein-19.png"
+    data.content_type = "image/png"
+    self.image = data
+  end
 end

@@ -6,7 +6,11 @@ class PostsController < ApplicationController
     redirect_to page_path("404") and return unless @trees.count > 0
     
     unless params[:sort_by] == "node_count"
-      @trees.all(:order => "#{params[:sort_by]} #{params[:order]}")
+      if params[:order] == "DESC"
+        @trees.sort! { |a,b| b.created_at <=> a.created_at }
+      else params[:order] == "ASC"
+        @trees.sort! { |a,b| a.created_at <=> b.created_at }
+      end
     else 
       if params[:order] == "ASC"
         @trees.sort! { |a,b| a.descendants.count <=> b.descendants.count }
@@ -44,6 +48,17 @@ class PostsController < ApplicationController
         post.ancestry = parent.id.to_s
       end
     end
+    
+    if post.save
+      redirect_to post_path(post.root.id)
+    else
+      redirect_to page_path("500") and return
+    end
+  end
+  
+  def destroy
+    post = Post.find_by_id(params[:id])
+    post.replace_image_with("#{Rails.root.to_s}/public/images/grabstein-19.png")
     
     if post.save
       redirect_to post_path(post.root.id)
