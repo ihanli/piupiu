@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   before_save :decode_image_data, :if => :image_data_provided?
   
   has_many :posts
+  validates_attachment_presence :avatar, { :message => "has to be drawn" }
   
   attr_accessor :image_data
   attr_accessible :email, :password, :password_confirmation, :reset_password_token, :country, :ido, :avatar, :image_data

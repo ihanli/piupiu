@@ -4,6 +4,8 @@
 <div class="text">
 <h1>sign up</h1><br /><br />
 
+<%= devise_error_messages! %>
+
 If you want to know what you are signing up for: <%= link_to "wtf?", page_path("wtf") %> <br />
 If your already know...just sign up ;)
 <br /><br /><br />
@@ -43,7 +45,7 @@ If your already know...just sign up ;)
   <canvas datasrc="/processing/zeichentoolpiupiu.pde" id="zeichentool"></canvas>
 
   <%= f.submit "", :class => "submit" %>
-  <%= link_to_function "", "document.getElementById('zeichentool').getContext('2d').clearRect(0,0,330,240); return false;", :class => "reset_processing" %>
+  <%= link_to_function "", "document.getElementById('zeichentool').getContext('2d').clearRect(0,0,330,240); proceed = false; return false;", :class => "reset_processing" %>
   <%= f.hidden_field :image_data %>
 <% end %>
 
@@ -52,10 +54,18 @@ If your already know...just sign up ;)
 
 <script type="text/javascript">
 	$(window).load(function(){
+		proceed = false;
+		
 		var canvas = document.getElementById("zeichentool");
 
+		$("#zeichentool").click(function() {
+			proceed = true;
+		});
+		
 		$("#signupform").submit(function() {
-			$("#user_image_data").val(canvas.toDataURL().substring(22));
+			if(proceed)
+				$("#user_image_data").val(canvas.toDataURL().substring(22));
+				
 			return true;
 		});
 	});
