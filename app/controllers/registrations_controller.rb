@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :get_countries_array, :only => [:new, :create]
-  
+
   def edit
     if params[:page] == "pw"
       render "users/registrations/password"
@@ -13,13 +13,13 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     avatar_changed = true if params[resource_name][:avatar]
-    
+
     if avatar_changed
       flag = resource.update_attributes(params[resource_name])
     else
       flag = resource.update_with_password(params[resource_name])
     end
-    
+
     if flag
       set_flash_message :notice, :updated
       sign_in resource_name, resource, :bypass => true
@@ -36,17 +36,17 @@ class RegistrationsController < Devise::RegistrationsController
     set_flash_message :notice, :destroyed if is_navigational_format?
     respond_with_navigational(resource){ redirect_to after_delete_account_path_for(resource_name) }
   end
-  
+
   protected
 
   def after_inactive_sign_up_path_for(resource)
     page_path("check_mail")
   end
-  
+
   def after_delete_account_path_for(resource)
     page_path("profile_deleted")
   end
-  
+
   def get_countries_array
     @countries_array = Country.all.map { |country| [country.fullname, country.abbreviation] }
     redirect_to page_path("500") and return unless @countries_array.count > 0

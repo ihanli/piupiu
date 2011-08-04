@@ -7,11 +7,12 @@ class CreatePosts < ActiveRecord::Migration
       t.integer "image_file_size"
       t.datetime "image_updated_at"
       t.string "ancestry"
-    
+
       t.timestamps
     end
-    
+
     add_index :posts, :ancestry
+    add_index :posts, :user
   end
 
   def self.down

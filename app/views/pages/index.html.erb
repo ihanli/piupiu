@@ -1,17 +1,17 @@
-<!-- start icons --> 
- 
-<div class="start_container"> 
- 
+<!-- start icons -->
+
+<div class="start_container">
+
 <%= link_to "", page_path("wtf"), :class => "start_wtf" %>
 <%= link_to "", new_user_registration_path, :class => "start_signup" %>
 
 <% if flash[:alert] == I18n.t("devise.failure.invalid") %>
-	<%= image_tag "pw_falsch-17.png", :class => "pw_wrong" %>	
+	<%= image_tag "pw_falsch-17.png", :class => "pw_wrong" %>
 <% else %>
-	<%= flash[:alert] %> 
+	<%= flash[:alert] %>
 <% end %>
 
-<div class="login"> 
+<div class="login">
 
 <%= link_to "", user_root_path, :class => "start_login" %>
 
@@ -22,5 +22,5 @@
   <%= link_to "", new_user_password_path, :class => "forgot_pw" %>
 <% end %>
 </div><!-- end login -->
- 
-</div><!-- end start container --> 
+
+</div><!-- end start container -->

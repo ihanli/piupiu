@@ -8,9 +8,9 @@ class CustomFailure < Devise::FailureApp
 
     if message == :timeout || message == :unauthenticated || !message
       redirect_to page_path("signin")
-    else 
+    else
       super
-    end 
+    end
   end
 
   def respond

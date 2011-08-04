@@ -3,7 +3,7 @@ class CreateCountries < ActiveRecord::Migration
     create_table :countries do |t|
       t.string "fullname"
       t.string "abbreviation"
-    
+
       t.timestamps
     end
   end
