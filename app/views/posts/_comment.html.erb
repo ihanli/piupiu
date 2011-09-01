@@ -11,6 +11,6 @@
 
 <%= button_to "", { :action => "download" }, :method => "get", :class => "download" %>
 
-<% if @node.id == current_user.id %>
+<% if @node.user.id == current_user.id %>
 	<%= button_to "", { :action => "destroy", :id => @node.id }, :method => "delete", :class => "delete_pic" %>
 <% end %>
