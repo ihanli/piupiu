@@ -12,4 +12,8 @@ end
 
 group :test do
   gem "sqlite3"
+  gem "capybara"
+  gem "launchy"
+  gem "factory_girl_rails"
+  gem "shoulda"
 end
