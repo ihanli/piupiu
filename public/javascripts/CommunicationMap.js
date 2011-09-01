@@ -144,6 +144,7 @@ function CommunicationMap(canvas)
 	
 	var click = function(e)
 	{
+		$("a#popup").attr("href", "");
 		$("a#popup").attr({"href":$("a#popup").attr("href") + this.ancestry + "/comment"});
 		$("a#popup").trigger("click");
 	}
