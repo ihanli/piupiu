@@ -19,7 +19,19 @@ class UserManagementTest < ActionDispatch::IntegrationTest
 
     	assert_equal 1, User.count
       assert_equal mail.subject, I18n.t("devise.mailer.confirmation_instructions.subject")
+      assert page.has_css?("div.check_mail_container")
   	end
+    
+    should "login user and redirect to profile page" do
+    	Factory :user
+
+      visit root_path
+      fill_in "user_email", :with => Factory.attributes_for(:user)[:email]
+ 		  fill_in "user_password", :with => Factory.attributes_for(:user)[:password]
+      click_button "user_submit"
+
+    	assert page.has_css?("div.rahmen_profilbild_gross")
+    end
   end
 end
 	
