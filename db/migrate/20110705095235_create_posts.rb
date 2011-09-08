@@ -12,11 +12,12 @@ class CreatePosts < ActiveRecord::Migration
     end
 
     add_index :posts, :ancestry
-    add_index :posts, :user
+    add_index :posts, :user_id
   end
 
   def self.down
-    drop_table :posts
     remove_index :posts, :ancestry
+    remove_index :posts, :user_id
+    drop_table :posts
   end
 end

@@ -1,5 +1,4 @@
 class PasswordsController < Devise::PasswordsController
-  # POST /resource/password
   def create
     self.resource = resource_class.send_reset_password_instructions(params[resource_name])
 
@@ -13,7 +12,6 @@ class PasswordsController < Devise::PasswordsController
 
   protected
 
-  # The path used after sending reset password instructions
   def after_sending_reset_password_instructions_path_for(resource_name)
     page_path("check_mail")
   end
