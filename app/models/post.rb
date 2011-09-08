@@ -29,32 +29,11 @@ class Post < ActiveRecord::Base
   end
 
   def set_ancestor(ancestor)
-    parent = Post.find_by_id(ancestor)
-
-    return false unless parent
-
-    if parent.is_root?
-      self.ancestry = parent.id.to_s
-    else
-      self.ancestry = "#{parent.ancestry}/#{parent.id}"
-    end
-
-    return true
+    return false unless parent = Post.find_by_id(ancestor)
+    self.ancestry = (parent.is_root? ? parent.id.to_s : "#{parent.ancestry}/#{parent.id}")
   end
-
-  def self.sort_by_creation(array, order)
-    if order == "DESC"
-      array.sort! { |a,b| b.created_at <=> a.created_at }
-    else order == "ASC"
-      array.sort! { |a,b| a.created_at <=> b.created_at }
-    end
-  end
-
-  def self.sort_by_node_count(array, order)
-    if order == "DESC"
-      array.sort! { |a,b| b.descendants.count <=> a.descendants.count }
-    else order == "ASC"
-      array.sort! { |a,b| a.descendants.count <=> b.descendants.count }
-    end
+  
+  def self.sort_by_criteria(array, criteria, order)
+    array.sort! { |a,b| order == "DESC" ? b.send(criteria) <=> a.send(criteria) : a.send(criteria) <=> b.send(criteria) }
   end
 end
