@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     _params = params
-    _params.reject! { |k,v| _params[k] != "descendent.count" || _params[k] != "created_at"}
+    _params.reject! { |k,v| _params[k] != "descendent.count" || _params[k] != "created_at" }
     redirect_to page_path("404"), :status => 404 and return unless @trees = Post.roots
     redirect_to page_path("500"), :status => 500 and return unless _params.has_key?("sort_by") && _params.has_key?("order")
     Post.sort_by_criteria(@trees, _params[:sort_by], _params[:order])
@@ -27,13 +27,13 @@ class PostsController < ApplicationController
   def create
     post = Post.new(:user => current_user, :image => params[:post][:image])
     redirect_to page_path("500"), :status => 500 and return unless post.set_ancestor(params[:post][:ancestry]) if params[:post][:ancestry]
-    post.save ? redirect_to post_path(post.root.id) : redirect_to page_path("500"), :status => 500 and return
+    post.save ? redirect_to(post_path(post.root.id)) : redirect_to(page_path("500"), :status => 500) and return
   end
 
   def destroy
     redirect_to page_path("404"), :status => 404 and return unless post = Post.find_by_id(params[:id])
     post.replace_image_with("#{Rails.root.to_s}/public/images/grabstein-19.png")
-    post.save ? redirect_to post_path(post.root.id) : redirect_to page_path("500"), :status => 500 and return
+    post.save ? redirect_to(post_path(post.root.id)) : redirect_to(page_path("500"), :status => 500) and return
   end
 
   def comment
