@@ -48,4 +48,16 @@ Piupiu::Application.configure do
   config.active_support.deprecation = :notify
   
   config.action_mailer.default_url_options = {:host => "localhost" }
+  
+  MAILERS = YAML.load_file("#{Rails.root}/config/mailers.yml")
+
+  config.action_mailer.smtp_settings = {
+    #:enable_starttls_auto => false,
+    :address => MAILERS["office"]["address"],
+    :port => MAILERS["office"]["port"],
+    :domain => MAILERS["office"]["domain"],
+    :authentication => MAILERS["office"]["authentication"],
+    :user_name => MAILERS["office"]["user_name"],
+    :password => MAILERS["office"]["password"]
+  }
 end
