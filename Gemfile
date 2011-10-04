@@ -10,6 +10,10 @@ group :development, :production do
   gem "mysql"
 end
 
+group :production do
+  gem "mysql2"
+end
+
 group :test do
   gem "sqlite3"
   gem "capybara"
