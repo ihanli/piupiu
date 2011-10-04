@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :validatable, :confirmable, :timeoutable
-  has_attached_file :avatar, :default_style => :thumb, :styles => { :thumb => "203x147"}
+  has_attached_file :avatar, :default_style => :thumb, :styles => { :thumb => "203x147"}, :url => "/system/:id/:attachment/:style/:filename"
   before_validation :decode_image_data, :if => :image_data_provided?
 
-  has_many :posts
+  has_many :posts, :dependent => :destroy
   validates_attachment_presence :avatar, { :message => "has to be drawn" }
 
   attr_accessor :image_data

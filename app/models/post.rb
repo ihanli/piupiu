@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   has_ancestry
-  has_attached_file :image, :default_style => :medium, :styles => { :medium => "200x200"}
+  has_attached_file :image, :default_style => :medium, :styles => { :medium => "200x200"}, :url => "/system/:user/:attachment/:id/:style/:filename"
   validates_presence_of :user
   validates_attachment_presence :image
 
@@ -35,5 +35,11 @@ class Post < ActiveRecord::Base
   
   def self.sort_by_criteria(array, criteria, order)
     array.sort! { |a,b| order == "DESC" ? b.send(criteria) <=> a.send(criteria) : a.send(criteria) <=> b.send(criteria) }
+  end
+  
+  private
+  
+  Paperclip.interpolates :user  do |attachment, style|
+    attachment.instance.user.id
   end
 end

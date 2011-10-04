@@ -30,6 +30,7 @@ Piupiu::Application.configure do
   MAILERS = YAML.load_file("#{Rails.root}/config/mailers.yml")
 
   config.action_mailer.smtp_settings = {
+    #:enable_starttls_auto => false,
     :address => MAILERS["office"]["address"],
     :port => MAILERS["office"]["port"],
     :domain => MAILERS["office"]["domain"],
