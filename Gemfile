@@ -7,10 +7,6 @@ gem "paperclip", "~> 2.3"
 gem "ancestry"
 gem "mysql2", "0.2.7"
 
-group :development, :production do
-  gem "mysql"
-end
-
 group :test do
   gem "sqlite3"
   gem "capybara"
