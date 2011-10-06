@@ -1,7 +1,7 @@
 set :application, "piu piu"
 set :repository,  "ihanli@78.47.120.167:repos/piupiu.git"
 
-set :deploy_to, "/var/www/virtualhosts/beta/piupiu.at"
+set :deploy_to, "/var/www/virtualhosts/beta.piupiu.at"
 set :user, "piupiu_deployment"
 set :use_sudo, false
 
