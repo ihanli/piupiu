@@ -12,6 +12,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
+    params[resource_name][:reset_password_token] = nil if params[resource_name][:reset_password_token]
+    
     if params[resource_name][:avatar] ? resource.update_attributes(params[resource_name]) : resource.update_with_password(params[resource_name])
       set_flash_message :notice, :updated
       sign_in resource_name, resource, :bypass => true
