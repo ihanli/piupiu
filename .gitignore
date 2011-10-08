@@ -1,6 +1,11 @@
 .bundle
 db/*.sqlite3
+db/*.sqlite3-journal
 log/*.log
 tmp/
 config/database.yml
-Gemfile.lock
+config/mailers.yml
+config/initializers/paperclip.rb
+config/initializers/secret_token.rb
+public/system/
+rails_best_practices_output.html

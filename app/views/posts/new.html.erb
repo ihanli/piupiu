@@ -1,0 +1,5 @@
+<%= form_for @post, :html => { :class => "container_new_post", :multipart => "true" } do |f| %>
+	<%= f.file_field :image, :style => "visibility:hidden" %>
+	<%= button_to_function "", "$('#post_image').trigger('click'); return true", :class => "durchsuchen" %>
+	<%= f.submit "", :class => "submit_new_post" %>
+<% end %>

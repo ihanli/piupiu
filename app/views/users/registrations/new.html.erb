@@ -1,0 +1,72 @@
+<!-- content-->
+<div class="content">
+
+<div class="text">
+<h1>sign up</h1><br /><br />
+
+<%= devise_error_messages! %>
+
+If you want to know what you are signing up for: <%= link_to "wtf?", page_path("wtf") %> <br />
+If your already know...just sign up ;)
+<br /><br /><br />
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => "signupform", :multipart => true}) do |f| %>
+  <table>
+    <tr>
+      <td width="130">mail</td>
+      <td><%= f.text_field :email, :size => 39, :class => "feld" %></td>
+    </tr>
+    <tr>
+      <td>password</td>
+      <td><%= f.password_field :password, :size => 39, :class => "feld" %></td>
+    </tr>
+    <tr>
+      <td>repeat password</td>
+      <td><%= f.password_field :password_confirmation, :size => 39, :class => "feld" %></td>
+    </tr>
+    <tr>
+      <td>country</td>
+	  <td><%= f.select(:country, options_for_select(@countries_array, "  ")) %>
+    </tr>
+    <tr>
+      <td>what i do</td>
+      <td><%= f.text_field :ido, :size => 39, :class => "feld" %></td>
+    </tr>
+  </table>
+  <br />
+  <span class="textklein">
+    The information about your homecountry and what you do are not necessary. We are just curious who you are. ;) <br />
+	Every information you are giving us is not beeing used for anything than the piupiu comunity.
+  </span>
+  <br /><br />
+  <br />
+
+  Your profile picture has to be drawn into following field. <br /> It will be your identity on our site, because there are no nicknames.<br /><br />
+  <canvas datasrc="/processing/zeichentoolpiupiu.pde" id="zeichentool"></canvas>
+
+  <%= f.submit "", :class => "submit" %>
+  <%= link_to_function "", "document.getElementById('zeichentool').getContext('2d').clearRect(0,0,330,240); proceed = false; return false;", :class => "reset_processing" %>
+  <%= f.hidden_field :image_data %>
+<% end %>
+
+</div><!-- end text div -->
+</div><!-- end content -->
+
+<script type="text/javascript">
+	$(window).load(function(){
+		proceed = false;
+
+		var canvas = document.getElementById("zeichentool");
+
+		$("#zeichentool").click(function() {
+			proceed = true;
+		});
+
+		$("#signupform").submit(function() {
+			if(proceed)
+				$("#user_image_data").val(canvas.toDataURL().substring(22));
+
+			return true;
+		});
+	});
+</script>

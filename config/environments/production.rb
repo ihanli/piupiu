@@ -46,4 +46,20 @@ Piupiu::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.action_mailer.default_url_options = { :host => "beta.piupiu.at" }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  
+  MAILERS = YAML.load_file("#{Rails.root}/config/mailers.yml")
+
+  config.action_mailer.smtp_settings = {
+    #:enable_starttls_auto => false,
+    :address => MAILERS["gmail"]["address"],
+    :port => MAILERS["gmail"]["port"],
+    :domain => MAILERS["gmail"]["domain"],
+    :authentication => MAILERS["gmail"]["authentication"],
+    :user_name => MAILERS["gmail"]["user_name"],
+    :password => MAILERS["gmail"]["password"]
+  }
 end
