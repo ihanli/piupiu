@@ -6,7 +6,7 @@ Piupiu::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
@@ -47,7 +47,7 @@ Piupiu::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  config.action_mailer.default_url_options = { :host => "piupiu.at" }
+  config.action_mailer.default_url_options = { :host => "beta.piupiu.at" }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   

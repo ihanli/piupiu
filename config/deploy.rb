@@ -1,17 +1,21 @@
-set :application, "piu piu"
-set :repository,  "ihanli@78.47.120.167:repos/piupiu.git"
+set :stages, %w(staging production)
+require 'capistrano/ext/multistage'
 
-set :deploy_to, "/var/www/virtualhosts/beta.piupiu.at"
+set :application, "piu piu"
+
+set :scm, :git
+set :repository,  "ihanli@piupiu.at:repos/piupiu.git"
+set :branch, ENV["BRANCH"] || "master"
+set :deploy_via, :remote_cache
+#ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
+
 set :user, "piupiu_deployment"
 set :use_sudo, false
 
-set :scm, :git
-set :branch, ENV["BRANCH"] || "master"
-default_run_options[:pty] = true
-
-role :web, "78.47.120.167"
-role :app, "78.47.120.167"
-role :db,  "78.47.120.167", :primary => true
+role :web, "piupiu.at"
+role :app, "piupiu.at"
+role :db,  "piupiu.at", :primary => true
 
 namespace :deploy do
   task :start do ; end
