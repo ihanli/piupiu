@@ -1,2 +1,2 @@
-set :deploy_to, "/var/www/virtualhosts/piupiu.at/current/public"
+set :deploy_to, "/var/www/virtualhosts/piupiu.at/"
 set :rails_env, "production"
