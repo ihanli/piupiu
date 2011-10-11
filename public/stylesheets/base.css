@@ -776,7 +776,7 @@ a:active{
 	border:2px solid black;
 }
 .creator_overlay{
-	background-color:#999;
+	/*background-color:#999;*/
 	position:relative;
 	left:0px;
 	top:0px;
