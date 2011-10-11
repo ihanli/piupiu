@@ -35,7 +35,21 @@ class Post < ActiveRecord::Base
   end
   
   def self.sort_by_criteria(array, criteria, order)
-    array.sort! { |a,b| order == "DESC" ? b.send(criteria) <=> a.send(criteria) : a.send(criteria) <=> b.send(criteria) }
+    array.sort! do |a,b|
+      if order == "DESC"
+        if criteria == "created_at"
+          b.created_at <=> a.created_at
+        else
+          b.descendants.count <=> a.descendants.count
+        end
+      else
+        if criteria == "created_at"
+          a.created_at <=> b.created_at
+        else
+          a.descendants.count <=> b.descendants.count
+        end
+      end
+    end
   end
   
   def creator

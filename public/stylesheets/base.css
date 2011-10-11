@@ -769,14 +769,15 @@ a:active{
 }
 .profilbilder_overlay{
 	position:relative;
-	width:132px;
+	width:128px;
 	height:48px;
 	bottom:30px;
 	left:-20px;
 	border:2px solid black;
+	background-color: #FFF
 }
 .creator_overlay{
-	/*background-color:#999;*/
+	background-color:#999;
 	position:relative;
 	left:0px;
 	top:0px;
@@ -785,7 +786,7 @@ a:active{
 }
 .last_contributor_overlay{
 	background-color:#333;
-	position:relative;
+	position:absolute;
 	top:0px;
 	right:0px;
 	width:64px;
