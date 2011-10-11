@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     _params = params
-    _params.reject! { |k,v| _params[k] != "descendent.count" || _params[k] != "created_at" }
+    _params.reject! { |k,v| _params[k] != "descendents.count" && _params[k] != "created_at" && _params[k] != "DESC" && _params[k] != "ASC" }
     redirect_to page_path("404"), :status => 404 and return unless @trees = Post.roots
     Post.sort_by_criteria(@trees, _params[:sort_by], _params[:order]) if _params.has_key?("sort_by") && _params.has_key?("order")
   end

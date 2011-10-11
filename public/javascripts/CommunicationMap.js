@@ -45,6 +45,7 @@ function CommunicationMap(canvas)
 			renderTree(tree);
 			nodeSet.attr({"cursor":"pointer"});			
 			nodeSet.click(click);
+			nodeSet.hover(showOverlay, hideOverlay);
 		}
 		
 		edgeSet.remove();
@@ -63,6 +64,7 @@ function CommunicationMap(canvas)
 	
 		var parent = paper.image(json.url, centerOfParent.x, centerOfParent.y, json.width * scale, json.height * scale);
 		parent.ancestry = json.id;
+		parent.creator_url = json.creator_url;
 		
 		nodeSet.push(parent);
 		node.value = parent;
@@ -80,6 +82,7 @@ function CommunicationMap(canvas)
 			{
 				var child = paper.image(json.comments[i].url, 0, 0, json.comments[i].width * scale, json.comments[i].height * scale);
 				child.ancestry = json.comments[i].id;
+				child.creator_url = json.comments[i].creator_url;
 				nodeSet.push(child);
 				node.comments[node.comments.length - 1].value = child;
 			}
@@ -147,6 +150,19 @@ function CommunicationMap(canvas)
 		$("a#popup").attr("href", "");
 		$("a#popup").attr({"href":$("a#popup").attr("href") + this.ancestry + "/comment"});
 		$("a#popup").trigger("click");
+	}
+	
+	var showOverlay = function(e)
+	{
+		$("#overlay_pictures .creator_overlay").attr("src", this.creator_url);
+		$("#overlay_pictures").css("display", "block");
+		$("#overlay_pictures").css("left", this.attr("x") - $("#overlay_pictures").width());
+		$("#overlay_pictures").css("top", this.attr("y") + this.attr("height") + 2 * $("#overlay_pictures").height());
+	}
+	
+	var hideOverlay = function(e)
+	{
+		$("#overlay_pictures").css("display", "none");
 	}
 	
 	this.start = function(event)

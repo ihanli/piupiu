@@ -476,12 +476,13 @@ a:active{
 	left:360px;
 }
 
-.overlay_pictures{
+#overlay_pictures{
 	position:absolute;
-	left:-20px;
-	bottom:30px;
-	height:34px;
-	width:80px;
+	display:none;
+	/*left:-20px;
+	bottom:30px;*/
+	height:48px;
+	width:64px;
 	border:solid 2px black;
 	background-color:#FFF;
 }
@@ -513,12 +514,12 @@ a:active{
 .lupe:hover{
 	background-position: 0px 30px;
 }
-.picture .overlay_pictures{
+/*.picture #overlay_pictures{
 	display:none;
 }
-.picture:hover .overlay_pictures{
+.picture:hover #overlay_pictures{
 	display:block;
-}
+}*/
 .verbindung_rechts{
 	background-image:url(../images/verbindungspfeilrechts-09.png);
 	background-repeat:repeat-x;
@@ -767,7 +768,7 @@ a:active{
 	height:150px;*/
 }
 .profilbilder_overlay{
-	position:absolute;
+	position:relative;
 	width:132px;
 	height:48px;
 	bottom:30px;
@@ -776,24 +777,30 @@ a:active{
 }
 .creator_overlay{
 	background-color:#999;
-	position:absolute;
+	position:relative;
 	left:0px;
 	top:0px;
-	width:66px;
+	width:64px;
 	height:48px;
 }
 .last_contributor_overlay{
 	background-color:#333;
-	position:absolute;
+	position:relative;
 	top:0px;
 	right:0px;
-	width:66px;
+	width:64px;
 	height:48px;
 }
 .bsp_komm .profilbilder_overlay{
 	display:none;
 }
-.bsp_komm:hover .profilbilder_overlay{
+.bsp_komm a > div{
+	width:166px;
+	height:148px;
+	margin-right:50px;
+	margin-bottom:50px;
+}
+.bsp_komm a:hover .profilbilder_overlay{
 	display:block;
 }
 

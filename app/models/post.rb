@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
     {
       "id" => self.id,
       "url" => self.image.url(:medium),
+      "creator_url" => self.creator.avatar.url(:icon),
       "width" => geo.width,
       "height" => geo.height,
       "comments"   => self.children.map { |c| c.to_node }
@@ -35,6 +36,20 @@ class Post < ActiveRecord::Base
   
   def self.sort_by_criteria(array, criteria, order)
     array.sort! { |a,b| order == "DESC" ? b.send(criteria) <=> a.send(criteria) : a.send(criteria) <=> b.send(criteria) }
+  end
+  
+  def creator
+    self.user
+  end
+  
+  def last_contributor   
+    if self.root.is_childless?
+      self.root.user
+    else
+      descendants_list = self.root.descendants
+      descendants_list.sort! { |a,b| b.created_at <=> a.created_at }
+      descendants_list.first.user
+    end
   end
   
   private
