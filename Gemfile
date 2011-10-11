@@ -6,7 +6,7 @@ gem "high_voltage"
 gem "paperclip", "~> 2.3"
 gem "ancestry"
 
-group :production do
+group :production, :staging do
   gem "mysql2", "0.2.7"
 end
 
