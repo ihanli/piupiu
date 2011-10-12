@@ -702,6 +702,11 @@ a:active{
 	width:244px;
 	height:163px;
 }
+.rahmen_profilbild_gross img{
+  position:relative;
+  top:9px;
+  left: 11px;
+}
 .strichi_profil{
 	background-image:url(../images/strichi_profil-11.png);
 	background-position:260px center;
