@@ -4,10 +4,10 @@ require 'capistrano/ext/multistage'
 set :application, "piu piu"
 
 set :scm, :git
-set :repository,  "ihanli@piupiu.at:repos/piupiu.git"
+set :repository,  "git@github.com:ihanli/piupiu.git"
 set :branch, ENV["BRANCH"] || "master"
 set :deploy_via, :remote_cache
-#ssh_options[:forward_agent] = true
+ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
 set :user, "piupiu_deployment"
