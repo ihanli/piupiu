@@ -1,5 +1,17 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#post_image").change(function(){
+			if($(this).val())
+				$(".check_mark").css("display", "inline");
+			else
+				$(".check").css("display", "none");
+		});
+	});
+</script>
+
 <%= form_for @post, :html => { :class => "container_new_post", :multipart => "true" } do |f| %>
 	<%= f.file_field :image, :style => "visibility:hidden" %>
+	<div class="check_mark" style="display:none"></div>
 	<%= button_to_function "", "$('#post_image').trigger('click'); return true", :class => "durchsuchen" %>
 	<%= f.submit "", :class => "submit_new_post" %>
 <% end %>

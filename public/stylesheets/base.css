@@ -238,7 +238,7 @@ a:active{
 .forgot_pw:hover{
 	background-position: 0px 25px;
 }
-.check{
+.check, .check_mark{
 	background-image:url(../images/check-07.png);
 	cursor:pointer;
 	width:25px;
@@ -252,6 +252,11 @@ a:active{
 }
 .check:hover{
 	background-position: 0px 25px;
+}
+.check_mark{
+	cursor:default;
+	top:195px;
+	right:205px;
 }
 
 
