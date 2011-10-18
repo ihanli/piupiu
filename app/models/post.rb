@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   has_ancestry
-  has_attached_file :image, :default_style => :medium, :styles => { :medium => "200x200"}, :url => "/system/:user/:attachment/:id/:style/:filename"
+  has_attached_file :image, :default_style => :medium, :styles => { :medium => "200x200"}, :url => "/system/:user/:attachment/:id/:style/:normalized_image_file_name"
   validates_presence_of :user
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
@@ -67,9 +67,17 @@ class Post < ActiveRecord::Base
     end
   end
   
+  def normalized_image_file_name
+    "#{self.id}-#{self.image_file_name.gsub( /[^a-zA-Z0-9_\.]/, '_')}" 
+  end
+  
   private
   
   Paperclip.interpolates :user  do |attachment, style|
     attachment.instance.user.id
+  end
+  
+  Paperclip.interpolates :normalized_image_file_name do |attachment, style|
+    attachment.instance.normalized_image_file_name
   end
 end
