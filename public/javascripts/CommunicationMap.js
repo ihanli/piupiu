@@ -117,6 +117,9 @@ function CommunicationMap(canvas)
 
 	this.zoomIn = function()
 	{
+		if(zoom > 5)
+			return;
+			
 		zoom += .25;
 		nodeSet.scale(zoom, zoom);
 		this.render(tree);
