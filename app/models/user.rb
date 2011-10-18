@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   def decode_image_data
     data = StringIO.new(Base64.decode64(image_data))
     data.class.class_eval { attr_accessor :original_filename, :content_type }
-    data.original_filename = "avatar.png"
-    data.content_type = "image/png"
+    data.original_filename = "avatar.jpg"
+    data.content_type = "image/jpg"
     self.avatar = data
   end
 end

@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   has_attached_file :image, :default_style => :medium, :styles => { :medium => "200x200"}, :url => "/system/:user/:attachment/:id/:style/:filename"
   validates_presence_of :user
   validates_attachment_presence :image
+  validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   belongs_to :user
 
