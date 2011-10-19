@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
   attr_accessible :image, :user, :ancestry
 
   def to_node
-    geo = Paperclip::Geometry.from_file(image.to_file(:medium))
+    geo = Paperclip::Geometry.from_file(self.deleted? ? "#{Rails.root}/public/images/grabstein-19.png" : image.to_file(:medium))
 
     {
       "id" => self.id,
