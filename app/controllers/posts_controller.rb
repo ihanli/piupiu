@@ -29,8 +29,8 @@ class PostsController < ApplicationController
 
   def destroy
     redirect_to page_path("404"), :status => 404 and return unless post = Post.find_by_id(params[:id])
-    post.replace_image_with("#{Rails.root.to_s}/public/images/grabstein-19.png")
-    post.save ? redirect_to(post_path(post.root.id)) : redirect_to(page_path("500"), :status => 500) and return
+    
+    post.update_attribute(:deleted, true) ? redirect_to(post_path(post.root.id)) : redirect_to(page_path("500"), :status => 500) and return
   end
 
   def comment

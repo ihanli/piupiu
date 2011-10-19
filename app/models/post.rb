@@ -14,20 +14,12 @@ class Post < ActiveRecord::Base
 
     {
       "id" => self.id,
-      "url" => self.image.url(:medium),
+      "url" => self.deleted? ? "/images/grabstein-19.png" : self.image.url(:medium),
       "creator_url" => self.creator.avatar.url(:icon),
       "width" => geo.width,
       "height" => geo.height,
       "comments"   => self.children.map { |c| c.to_node }
     }
-  end
-
-  def replace_image_with(filename)
-    data = File.open(filename, "r")
-    data.class.class_eval { attr_accessor :original_filename, :content_type }
-    data.original_filename = "grabstein-19.png"
-    data.content_type = "image/png"
-    self.image = data
   end
 
   def set_ancestor(ancestor)
@@ -65,6 +57,10 @@ class Post < ActiveRecord::Base
       descendants_list.sort! { |a,b| b.created_at <=> a.created_at }
       descendants_list.first.user
     end
+  end
+  
+  def deleted?
+    self.deleted
   end
   
   def normalized_image_file_name

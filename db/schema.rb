@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110720110245) do
+ActiveRecord::Schema.define(:version => 20111019174753) do
 
   create_table "countries", :force => true do |t|
     t.string   "fullname"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20110720110245) do
     t.string   "ancestry"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",            :default => false
   end
 
   add_index "posts", ["ancestry"], :name => "index_posts_on_ancestry"
