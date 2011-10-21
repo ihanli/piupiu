@@ -58,6 +58,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.0.9)
     ffi (1.0.9-x86-mingw32)
+    haml (3.0.18)
     high_voltage (1.0.1)
     i18n (0.5.0)
     json_pure (1.6.1)
@@ -69,6 +70,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mysql (2.8.1)
     mysql (2.8.1-x86-mingw32)
     mysql2 (0.2.7)
     nokogiri (1.5.0)
@@ -127,6 +129,7 @@ DEPENDENCIES
   capybara
   devise
   factory_girl_rails
+  haml
   high_voltage
   launchy
   mysql
