@@ -1,0 +1,16 @@
+:javascript
+  $(document).ready(function(){
+    $("#post_image").change(function(){
+      if($(this).val())
+        $(".check_mark").css("display", "inline");
+      else
+        $(".check").css("display", "none");
+    });
+  });
+
+
+= form_for @post, :html => { :class => "container_new_post", :multipart => "true" } do |f|
+  = f.file_field :image, :style => "visibility:hidden"
+  .check_mark{ :style => "display:none" }
+  = button_to_function "", "$('#post_image').trigger('click'); return true", :class => "durchsuchen"
+  = f.submit "", :class => "submit_new_post"

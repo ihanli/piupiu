@@ -1,0 +1,17 @@
+= link_to "", posts_path(:sort_by => "created_at", :order => "DESC"), :class => "new_old"
+= link_to "", posts_path(:sort_by => "created_at", :order => "ASC"), :class => "old_new"
+= link_to "", posts_path(:sort_by => "descendants.count", :order => "DESC"), :class => "big_small"
+= link_to "", posts_path(:sort_by => "descendants.count", :order => "ASC"), :class => "small_big"
+
+.bsp_komm
+  - @trees.each do |tree|
+    %a{ :href => post_path(tree.id) }
+      %div
+        %img{ :src => tree.image.url(:medium) }
+        .profilbilder_overlay
+          %img{ :src => tree.creator.avatar.url(:icon), :class => "creator_overlay" }
+          
+          - if tree.has_children?
+            %img{ :src => tree.last_contributor.avatar.url(:icon), :class => "last_contributor_overlay" }
+          - else
+            .last_contributor_overlay
