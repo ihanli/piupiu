@@ -1108,3 +1108,10 @@ a:hover .profilbilder_overlay{
   margin-left: 255px;
   margin-top: 60px;
 }
+
+#error_explanation {
+  margin-bottom: 30px;
+}
+#error_explanation > h2 {
+	font-weight:normal;
+}
