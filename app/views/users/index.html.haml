@@ -1,0 +1,18 @@
+.rahmen_profilbild_gross
+  %img{ :src => current_user.avatar.url(:thumb) }
+  
+.own_communications
+  - @posts.each do |post|
+    %a{ :href => post_path(post.id)}
+      %img{ :src => post.image.url(:medium) }
+    
+.strichi_profil
+
+.roots_of_comments
+  - @comments.each do |comment|
+    %a{ :href => post_path(comment.root.id)}
+      %img{ :src => comment.root.image.url(:medium) }
+
+= link_to "", page_path("delete_profile"), { :class => "delete_profile" }
+= link_to "", edit_user_registration_path(:page => "avatar"), { :class => "change_pic" }
+= link_to "", edit_user_registration_path(:page => "pw"), { :class => "change_pw" }

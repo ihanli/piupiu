@@ -3,5 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @posts = Post.roots.find_all_by_user_id(current_user.id)
+    @comments = Post.comments.find_all_by_user_id(current_user.id)
   end
 end

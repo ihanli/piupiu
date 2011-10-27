@@ -802,7 +802,7 @@ a:active{
 	width:64px;
 	height:48px;
 }
-.bsp_komm .profilbilder_overlay{
+.profilbilder_overlay{
 	display:none;
 }
 .bsp_komm a > div{
@@ -811,7 +811,7 @@ a:active{
 	margin-right:50px;
 	margin-bottom:50px;
 }
-.bsp_komm a:hover .profilbilder_overlay{
+a:hover .profilbilder_overlay{
 	display:block;
 }
 
@@ -1085,4 +1085,17 @@ a:active{
 }
 .bsp_komm div{
 	float:left;
+}
+
+.own_communications{
+  height:157px;
+  overflow:auto;
+  margin-left:255px;
+  margin-top:110px;
+}
+.roots_of_comments{
+  height:320px;
+  overflow:auto;
+  margin-left: 255px;
+  margin-top: 60px;
 }

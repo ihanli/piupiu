@@ -63,6 +63,10 @@ class Post < ActiveRecord::Base
     self.deleted
   end
   
+  def self.comments
+    Post.where("ancestry IS NOT NULL")
+  end
+  
   def normalized_image_file_name
     "#{self.id}-#{self.image_file_name.gsub( /[^a-zA-Z0-9_\.]/, '_')}" 
   end
