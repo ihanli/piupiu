@@ -1,17 +1,26 @@
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#post_image").change(function(){
-			if($(this).val())
-				$(".check_mark").css("display", "inline");
-			else
-				$(".check").css("display", "none");
-		});
-	});
+  $(document).ready(function(){
+    
+    $("#post_submit").prop("disabled", true);
+    $("#post_submit").addClass("disabled");
+    $(".durchsuchen").css("visibility", "visible");
+    $("#post_image").css("visibility", "hidden");
+    
+    $("#post_image").change(function(){
+      if($(this).val()){
+        $("#post_submit").removeAttr("disabled");
+        $("#post_submit").removeClass("disabled");
+      }
+      else{
+        $("#post_submit").prop("disabled", true);
+        $("#post_submit").addClass("disabled");
+      }
+    });
+  });
 </script>
 
 <%= form_for @post, :html => { :class => "container_new_post", :multipart => "true" } do |f| %>
-	<%= f.file_field :image, :style => "visibility:hidden" %>
-	<div class="check_mark" style="display:none"></div>
-	<%= button_to_function "", "$('#post_image').trigger('click'); return true", :class => "durchsuchen" %>
-	<%= f.submit "", :class => "submit_new_post" %>
+  <%= f.file_field :image %>
+  <%= button_to_function "", "$('#post_image').trigger('click'); return true", :class => "durchsuchen", :style => "visibility:hidden" %>
+  <%= f.submit "", :class => "submit_new_post" %>
 <% end %>

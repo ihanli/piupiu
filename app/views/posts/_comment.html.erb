@@ -1,10 +1,31 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    
+    $("#post_submit").prop("disabled", true);
+    $("#post_submit").addClass("disabled");
+    $(".durchsuchen").css("visibility", "visible");
+    $("#post_image").css("visibility", "hidden");
+    
+    $("#post_image").change(function(){
+      if($(this).val()){
+        $("#post_submit").removeAttr("disabled");
+        $("#post_submit").removeClass("disabled");
+      }
+      else{
+        $("#post_submit").prop("disabled", true);
+        $("#post_submit").addClass("disabled");
+      }
+    });
+  });
+</script>
+
 <div class="container_pic">
 	<%= image_tag @node.image.url(:original), :class => "big_pic" %>
 </div>
 
 <%= form_for @post, :html => { :id => "comment_post", :class => " ", :multipart => "true" } do |f| %>
-	<%= f.file_field :image, :style => "visibility:hidden" %>
-	<%= button_to_function "", "$('#post_image').trigger('click')", :class => "upload" %>
+	<%= f.file_field :image %>
+	<%= button_to_function "", "$('#post_image').trigger('click')", :class => "upload", :style => "visibility:hidden" %>
 	<%= f.submit "", :class => "submit_popup" %>
 	<%= f.hidden_field :ancestry, :value => @node.id %>
 <% end %>

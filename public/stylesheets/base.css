@@ -444,7 +444,7 @@ a:active{
 	background-color:#FFF;
 	border:none;
 }
-.submit_popup:hover{
+.submit_popup:hover, .submit_popup.disabled{
 	background-position: 0px 70px;
 }
 
@@ -960,7 +960,7 @@ a:hover .profilbilder_overlay{
 	background-color:#FFF;
 	border:none;
 }
-.submit_new_post:hover{
+.submit_new_post:hover, .submit_new_post.disabled{
 	background-position: 0px 70px;
 }
 
