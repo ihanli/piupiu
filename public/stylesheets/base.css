@@ -117,9 +117,18 @@ a:active{
 .rahmen_profilbild:hover{
 	background-position: 0px 70px;
 }
+.rahmen_profilbild > img {
+  position: relative;
+  top: 9px;
+  left: 6px;
+  width: 64px;
+}
 
 .aktiv{
 	background-position: 0px 70px;
+}
+.rahmen_profilbild.aktiv > img {
+  top:8px;
 }
 
 .overview_link{

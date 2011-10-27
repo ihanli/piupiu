@@ -25,7 +25,7 @@
 
 <% if user_signed_in? and !current_page?(:controller => "high_voltage/pages", :action => "show", :id => "index") %>
   <!-- menubar -->
-  <%= link_to "", user_root_path, :class => current_page?(:controller => user_root_path, :action => "index") ? ["rahmen_profilbild","aktiv"] : "rahmen_profilbild" %>
+  <%= link_to image_tag(current_user.avatar.url(:icon)), user_root_path, :class => current_page?(:controller => user_root_path, :action => "index") ? ["rahmen_profilbild","aktiv"] : "rahmen_profilbild" %>
   <%= link_to "", posts_path, :class => current_page?(:controller => "/posts", :action => "index") ? ["overview_link","aktiv"] : "overview_link" %>
   <%= link_to "", new_post_path, :class => current_page?(:controller => "/posts", :action => "new") ? ["new_post","aktiv"] : "new_post" %>
   <%= link_to "", destroy_user_session_path, :class => "logout" %>
