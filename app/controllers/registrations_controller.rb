@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     elsif params[:page] == "avatar"
       render "users/registrations/avatar"
     else
-      redirect_to page_path("404"), :status => 404 and return
+      render_optional_error_file(404) and return
     end
   end
 
@@ -20,7 +20,7 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to after_update_path_for(resource)
     else
       clean_up_passwords(resource)
-      redirect_to page_path("500"), :status => 500 and return
+      render_optional_error_file(500) and return
     end
   end
 
@@ -43,6 +43,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def get_countries_array
     @countries_array = Country.all.map { |country| [country.fullname, country.abbreviation] }
-    redirect_to page_path("500"), :status => 500 and return unless @countries_array.count > 0
+    render_optional_error_file(500) and return unless @countries_array.count > 0
   end
 end
