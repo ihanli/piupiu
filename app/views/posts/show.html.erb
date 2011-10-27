@@ -2,7 +2,13 @@
 	$(document).ready(function(){
 		map = new CommunicationMap();
 		startPos = {x:0,y:0};
-
+		
+		$(window).resize(function(){
+			var top = $("#balken_oben").offset().top + $("#balken_oben").height();
+			var height = $("#balken_unten").offset().top - top;
+			$("#canvas > svg").attr({"height":height,"width":$(".plus_zoom").offset().left});
+		});
+		
 		$("#canvas").mousedown(function(e){
 			startPos.x = e.pageX;
 			startPos.y = e.pageY;
