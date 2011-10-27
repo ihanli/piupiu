@@ -5,6 +5,7 @@ gem "devise"
 gem "high_voltage"
 gem "paperclip", "~> 2.3"
 gem "ancestry"
+gem "haml"
 
 group :production, :staging do
   gem "mysql2", "0.2.7"
