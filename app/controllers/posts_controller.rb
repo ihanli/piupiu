@@ -25,13 +25,13 @@ class PostsController < ApplicationController
     render_optional_error_file(500) and return unless params[:post]
     post = Post.new(:user => current_user, :image => params[:post][:image])
     render_optional_error_file(500) and return unless post.set_ancestor(params[:post][:ancestry]) if params[:post][:ancestry]
-    post.save ? redirect_to(post_path(post.root.id)) : render_optional_error_file(500) and return
+    post.save ? redirect_to(post_path(post.root.id)) : render_optional_error_file(418) and return
   end
 
   def destroy
     render_optional_error_file(404) and return unless post = Post.find_by_id(params[:id])
     
-    post.update_attribute(:deleted, true) ? redirect_to(post_path(post.root.id)) : (render_optional_error_file(500) and return)
+    post.update_attribute(:deleted, true) ? redirect_to(post_path(post.root.id)) : (render_optional_error_file(418) and return)
   end
 
   def comment

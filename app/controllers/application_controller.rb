@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
       render :template => "pages/500", :status => 500, :layout => "error"
     elsif status_code == 404
       render :template => "pages/404", :status => 404, :layout => "error"
+    elsif status_code == 418
+      render :template => "pages/418", :status => 418, :layout => "error"
     end
   end
 end
