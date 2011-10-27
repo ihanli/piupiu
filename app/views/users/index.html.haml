@@ -1,13 +1,15 @@
 .rahmen_profilbild_gross
   %img{ :src => current_user.avatar.url(:thumb) }
-  
-.own_communications
-  - @posts.each do |post|
-    %a{ :href => post_path(post.id)}
-      %img{ :src => post.image.url(:medium) }
+
+- if @posts  
+  .own_communications
+    - @posts.each do |post|
+      %a{ :href => post_path(post.id)}
+        %img{ :src => post.image.url(:medium) }
     
 .strichi_profil
 
+- if @comments
 .roots_of_comments
   - @comments.each do |comment|
     %a{ :href => post_path(comment.root.id)}
