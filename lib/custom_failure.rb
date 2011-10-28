@@ -7,7 +7,7 @@ class CustomFailure < Devise::FailureApp
     message = warden.message || warden_options[:message]
 
     if message == :timeout || message == :unauthenticated || !message
-      redirect_to page_path("signin")
+       redirect_to page_path("403")
     else
       super
     end
