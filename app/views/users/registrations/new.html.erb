@@ -77,8 +77,10 @@ If your already know...just sign up ;)
   
   $(document).ready(function(){
     $(".reset_processing").click(function(){
-      canvas.getContext('2d').clearRect(0, 0, 330, 240);
-      proceed = false;
+	  canvas.getContext("2d").fillStyle = "#FFFFFF";
+	  canvas.getContext("2d").fillRect(0, 0, 330, 240);
+	  $("#user_image_data").attr("value", "");
+	  proceed = false;
     });
   });
 </script>
