@@ -23,7 +23,7 @@ function CommunicationMap(canvas)
 	var coordBackup = [];
 	
 	var cycleCount = 0;
-	var scale = .25;
+	var scale = 1.0;
 	var centerOfParent = {x:0,y:0};
 	var positionRelativeToParent = {x:0,y:0};
 	var nodeSize = {width:0,height:0};
@@ -117,7 +117,7 @@ function CommunicationMap(canvas)
 
 	this.zoomIn = function()
 	{
-		if(zoom > 5)
+		if(zoom > 10)
 			return;
 			
 		zoom += .25;
