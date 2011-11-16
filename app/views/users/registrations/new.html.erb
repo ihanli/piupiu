@@ -26,7 +26,7 @@ If your already know...just sign up ;)
     </tr>
     <tr>
       <td>country</td>
-	  <td><%= f.select(:country, options_for_select(@countries_array, "  ")) %>
+    <td><%= f.select(:country, options_for_select(@countries_array, @country)) %>
     </tr>
     <tr>
       <td>what i do</td>
@@ -36,7 +36,7 @@ If your already know...just sign up ;)
   <br />
   <span class="textklein">
     The information about your homecountry and what you do are not necessary. We are just curious who you are. ;) <br />
-	Every information you are giving us is not beeing used for anything than the piupiu comunity.
+  Every information you are giving us is not beeing used for anything than the piupiu comunity.
   </span>
   <br /><br />
   <br />
@@ -45,28 +45,40 @@ If your already know...just sign up ;)
   <canvas datasrc="/processing/zeichentoolpiupiu.pde" id="zeichentool"></canvas>
 
   <%= f.submit "", :class => "submit" %>
-  <%= link_to_function "", "document.getElementById('zeichentool').getContext('2d').clearRect(0,0,330,240); proceed = false; return false;", :class => "reset_processing" %>
-  <%= f.hidden_field :image_data %>
+  <%= link_to "", "#reset", :class => "reset_processing" %>
+  <%= f.hidden_field :image_data, :value => @image_data %>
 <% end %>
 
 </div><!-- end text div -->
 </div><!-- end content -->
 
 <script type="text/javascript">
-	$(window).load(function(){
-		proceed = false;
+  $(window).load(function(){
+    proceed = false;
+    canvas = document.getElementById("zeichentool");
 
-		var canvas = document.getElementById("zeichentool");
+    $("#zeichentool").click(function() {
+      proceed = true;
+    });
 
-		$("#zeichentool").click(function() {
-			proceed = true;
-		});
+    $("#signupform").submit(function() {
+      if(proceed)
+        $("#user_image_data").val(canvas.toDataURL().substring(22));
 
-		$("#signupform").submit(function() {
-			if(proceed)
-				$("#user_image_data").val(canvas.toDataURL().substring(22));
+      return true;
+    });
 
-			return true;
-		});
-	});
+    if($("#user_image_data").val()){
+      var image = new Image();
+      image.src = "data:image/jpeg;base64," + $("#user_image_data").attr("value");
+      image.onload = function(){ canvas.getContext("2d").drawImage(image, 0, 0); }
+    }
+  });
+  
+  $(document).ready(function(){
+    $(".reset_processing").click(function(){
+      canvas.getContext('2d').clearRect(0, 0, 330, 240);
+      proceed = false;
+    });
+  });
 </script>

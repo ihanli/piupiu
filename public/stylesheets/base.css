@@ -128,7 +128,7 @@ a:active{
 	background-position: 0px 70px;
 }
 .rahmen_profilbild.aktiv > img {
-  top:9px;
+  top:8px;
 }
 
 .overview_link{
@@ -790,37 +790,45 @@ a:active{
 	position:relative;
 	width:128px;
 	height:48px;
-	bottom:30px;
+	bottom:50px;
 	left:-20px;
 	border:2px solid black;
 	background-color: #FFF
 }
 .creator_overlay{
-	background-color:#999;
-	position:relative;
+  background-color:#999;
+	position:absolute;
 	left:0px;
-	top:0px;
+  top:0px;
+	width:64px;
+	height:48px;
+}
+.creator_overlay img{
 	width:64px;
 	height:48px;
 }
 .last_contributor_overlay{
-	background-color:#333;
+  background-color:#333;
 	position:absolute;
 	top:0px;
 	right:0px;
 	width:64px;
 	height:48px;
 }
+.last_contributor_overlay img{
+	width:64px;
+	height:48px;
+}
 .profilbilder_overlay{
 	display:none;
 }
-.bsp_komm a > div{
+.bsp_komm > div{
 	width:166px;
 	height:148px;
-	margin-right:50px;
+	margin-right:60px;
 	margin-bottom:50px;
 }
-a:hover .profilbilder_overlay{
+a:hover + .profilbilder_overlay{
 	display:block;
 }
 

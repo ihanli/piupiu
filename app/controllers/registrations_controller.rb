@@ -1,5 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :get_countries_array, :only => [:new, :create]
+  
+  def create
+    @image_data = params[:user][:image_data]
+    @country = params[:user][:country]
+    super
+  end
 
   def edit
     if params[:page] == "pw"
