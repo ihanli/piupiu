@@ -10,7 +10,7 @@
 	<a href=<%= "#{post_path(tree.id)}" %>><div>
 		<%= image_tag tree.image.url(:medium) %>
 		<div class="profilbilder_overlay">
-			<%= image_tag tree.creator.avatar.url(:icon), :class => "creator_overlay" %>
+			<%= link_to image_tag(tree.creator.avatar.url(:icon)), user_path(tree.creator), :class => "creator_overlay" %>
 			
 			<% if tree.has_children? %>
 				<%= image_tag tree.last_contributor.avatar.url(:icon), :class => "last_contributor_overlay" %>
