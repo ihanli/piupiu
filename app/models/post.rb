@@ -68,7 +68,9 @@ class Post < ActiveRecord::Base
   end
   
   def normalized_image_file_name
-    "#{self.id}-#{self.image_file_name.gsub( /[^a-zA-Z0-9_\.]/, '_')}" 
+    nomalized_file_name = self.image_file_name[0, self.image_file_name.rindex(".")]
+    file_extension = self.image_file_name[self.image_file_name.rindex("."), self.image_file_name.length]
+    "#{self.id}-#{nomalized_file_name}#{file_extension}" 
   end
   
   private
