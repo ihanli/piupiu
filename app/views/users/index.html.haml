@@ -5,7 +5,7 @@
   .own_communications
     - @posts.each do |post|
       %a{ :href => post_path(post.id) }
-        %img{ :src => post.image.url(:medium) }
+        %img{ :src => post.deleted? ? "/images/grabstein-19.png" : post.image.url(:medium) }
     
 .strichi_profil
 
@@ -13,7 +13,7 @@
   .roots_of_comments
     - @comments.each do |comment|
       %a{ :href => post_path(comment.root.id) }
-        %img{ :src => comment.root.image.url(:medium) }
+        %img{ :src => comment.root.deleted? ? "/images/grabstein-19.png" : comment.root.image.url(:medium) }
 
 - if @user == current_user
   = link_to "", page_path("delete_profile"), { :class => "delete_profile" }

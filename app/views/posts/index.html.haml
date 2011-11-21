@@ -8,7 +8,7 @@
   - @trees.each do |tree|
     %a{ :href => post_path(tree.id) }
       %div
-        %img{ :src => tree.image.url(:medium) }
+        %img{ :src => tree.deleted? ? "/images/grabstein-19.png" : tree.image.url(:medium) }
         .profilbilder_overlay
           %a{ :href => user_path(tree.creator), :class => "creator_overlay" }
             %img{ :src => tree.creator.avatar.url(:icon) }
