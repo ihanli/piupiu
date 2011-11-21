@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
 
     {
       "id" => self.id,
+      "user_profile" => "/users/#{self.user.id}",
       "url" => self.deleted? ? "/images/grabstein-19.png" : self.image.url(:medium),
       "creator_url" => self.creator.avatar.url(:icon),
       "width" => geo.width,

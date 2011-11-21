@@ -43,6 +43,16 @@
 			loadingImage : "/images/loading.gif",
 			closeImage   : "/images/closelabel.png"
 		});
+		
+		$("#overlay_pictures").hover(
+			function(){
+				$(this).css("display", "block");
+			},
+			
+			function(){
+				$(this).css("display", "none");
+			}
+		);
 	});
 </script>
 
@@ -54,5 +64,7 @@
 <%= link_to_function "", "map.zoomOut()", :class => "minus_zoom" %>
 
 <div id="overlay_pictures">
-	<img class="creator_overlay" />
+	<a href="">
+		<img class="creator_overlay" />
+	</a>
 </div>
