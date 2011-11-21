@@ -129,7 +129,7 @@ function CommunicationMap(canvas)
 
 	this.zoomOut = function()
 	{
-		if(zoom > 1)
+		if(zoom > .25)
 			zoom -= .25;
 
 		nodeSet.scale(zoom, zoom);
