@@ -828,7 +828,7 @@ a:active{
 	margin-right:60px;
 	margin-bottom:50px;
 }
-a:hover + .profilbilder_overlay{
+a:hover + .profilbilder_overlay, a:hover + .profilbilder_overlay:hover, a + .profilbilder_overlay:hover{
 	display:block;
 }
 
