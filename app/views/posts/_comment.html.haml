@@ -1,0 +1,33 @@
+.container_pic
+  %img{ :src => @node.image.url(:original), :class => "big_pic" }
+  
+= form_for @post, :html => { :id => "comment_post", :class => " ", :multipart => "true" } do |f|
+  = f.file_field :image
+  = button_to_function "", "$('#post_image').trigger('click')", :class => "upload", :style => "visibility:hidden"
+  = f.submit "", :class => "submit_popup"
+  = f.hidden_field :ancestry, :value => @node.id
+  
+= button_to "", { :action => "download" }, :method => "get", :class => "download"
+
+- if @node.user.id == current_user.id && !@node.deleted?
+  = button_to "", { :action => "destroy", :id => @node.id }, :method => "delete", :class => "delete_pic"
+  
+:javascript
+  $(document).ready(function(){
+    
+    $("#post_submit").prop("disabled", true);
+    $("#post_submit").addClass("disabled");
+    $(".upload").css("visibility", "visible");
+    $("#post_image").css("visibility", "hidden");
+    
+    $("#post_image").change(function(){
+      if($(this).val()){
+        $("#post_submit").removeAttr("disabled");
+        $("#post_submit").removeClass("disabled");
+      }
+      else{
+        $("#post_submit").prop("disabled", true);
+        $("#post_submit").addClass("disabled");
+      }
+    });
+  });

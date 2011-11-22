@@ -1,0 +1,88 @@
+.content
+  .text
+    %h1 sign up
+    %br
+    %br
+    = devise_error_messages!
+    = "If you want to know what you are signing up for: #{link_to "wtf?", page_path("wtf")}"
+    %br
+    = "If your already know...just sign up ;)"
+    %br
+    %br
+    %br
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :id => "signupform", :multipart => true}) do |f|
+      %table
+        %tr
+          %td{ :width => "130" }
+            = "mail"
+          %td
+            = f.text_field :email, :size => 39, :class => "feld"
+        %tr
+          %td
+            = "password"
+          %td
+            = f.password_field :password, :size => 39, :class => "feld"
+        %tr
+          %td
+            = "repeat password"
+          %td
+            = f.password_field :password_confirmation, :size => 39, :class => "feld"
+        %tr
+          %td
+            = "country"
+          %td
+            = f.select(:country, options_for_select(@countries_array, "  "))
+        %tr
+          %td
+            = "what i do"
+          %td
+            = f.text_field :ido, :size => 39, :class => "feld"
+      %br
+      %span.text_klein
+        = "The information about your homecountry and what you do are not necessary. We are just curious who you are. ;)"
+        %br
+      	= "Every information you are giving us is not beeing used for anything than the piupiu comunity."
+      %br
+      %br
+      %br
+      = "Your profile picture has to be drawn into following field."
+      %br
+      = "It will be your identity on our site, because there are no nicknames."
+      %br
+      %br
+      %canvas#zeichentool{ :datasrc => "/processing/zeichentoolpiupiu.pde" }
+      = f.submit "", :class => "submit"
+      = link_to_function "", "document.getElementById('zeichentool').getContext('2d').clearRect(0,0,330,240); proceed = false; return false;", :class => "reset_processing"
+      = f.hidden_field :image_data
+
+:javascript
+  $(window).load(function(){
+    proceed = false;
+    canvas = document.getElementById("zeichentool");
+
+    $("#zeichentool").click(function() {
+      proceed = true;
+    });
+
+    $("#signupform").submit(function() {
+      if(proceed)
+        $("#user_image_data").val(canvas.toDataURL().substring(22));
+
+      return true;
+    });
+
+    if($("#user_image_data").val()){
+      var image = new Image();
+      image.src = "data:image/jpeg;base64," + $("#user_image_data").attr("value");
+      image.onload = function(){ canvas.getContext("2d").drawImage(image, 0, 0); }
+    }
+  });
+
+  $(document).ready(function(){
+    $(".reset_processing").click(function(){
+    canvas.getContext("2d").fillStyle = "#FFFFFF";
+    canvas.getContext("2d").fillRect(0, 0, 330, 240);
+    $("#user_image_data").attr("value", "");
+    proceed = false;
+    });
+  });

@@ -1,0 +1,16 @@
+%html
+  %head
+    %title piu piu
+    %link{ :href => "/images/favicon_piupiu-01.png", :rel => "icon", :type => "image/ico" }
+    = stylesheet_link_tag :all
+    = csrf_meta_tag
+  %body
+    #balken_oben.balken.oben      
+    = link_to "", user_signed_in? ? posts_path : root_path, { :class => "piupiu" }
+    
+    = link_to "", page_path("wtf"), :class => current_page?(:controller => "high_voltage/pages", :action => "show", :id => "wtf") ? ["wtf","aktiv"] : "wtf"
+    = link_to "", page_path("impressum"), :class => current_page?(:controller => "high_voltage/pages", :action => "show", :id => "impressum") ? ["impressum","aktiv"] : "impressum"
+    
+    = yield
+    
+    #balken_unten.balken.unten

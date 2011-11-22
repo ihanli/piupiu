@@ -1,8 +1,0 @@
-<div class="forgot_pw_container">
-	<%= image_tag "enter_mail-16.png" %>
-	
-	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => "enter_mail" }) do |f| %>
-		<%= f.text_field :email, :size => 20, :class => "feld" %>
-		<%= f.submit "", :class => "submit_mail" %>
-	<% end %>
-</div>

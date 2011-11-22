@@ -3,11 +3,15 @@
 = link_to "", posts_path(:sort_by => "descendants.count", :order => "DESC"), :class => "big_small"
 = link_to "", posts_path(:sort_by => "descendants.count", :order => "ASC"), :class => "small_big"
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> switch_to_haml
 .bsp_komm
   - @trees.each do |tree|
     %a{ :href => post_path(tree.id) }
       %div
+<<<<<<< HEAD
         %img{ :src => tree.deleted? ? "/images/grabstein-19.png" : tree.image.url(:medium) }
         .profilbilder_overlay
           %a{ :href => user_path(tree.creator), :class => "creator_overlay" }
@@ -16,5 +20,13 @@
           - if tree.has_children?
             %a{ :href => user_path(tree.last_contributor), :class => "last_contributor_overlay" }
               %img{ :src => tree.last_contributor.avatar.url(:icon) }
+=======
+        %img{ :src => tree.image.url(:medium) }
+        .profilbilder_overlay
+          %img{ :src => tree.creator.avatar.url(:icon), :class => "creator_overlay" }
+          
+          - if tree.has_children?
+            %img{ :src => tree.last_contributor.avatar.url(:icon), :class => "last_contributor_overlay" }
+>>>>>>> switch_to_haml
           - else
             .last_contributor_overlay
