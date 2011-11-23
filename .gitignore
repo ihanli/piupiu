@@ -5,7 +5,6 @@ log/*.log
 tmp/
 config/database.yml
 config/mailers.yml
-config/initializers/paperclip.rb
 config/initializers/secret_token.rb
 public/system/
 rails_best_practices_output.html

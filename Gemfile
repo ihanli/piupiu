@@ -6,9 +6,10 @@ gem "high_voltage"
 gem "paperclip", "~> 2.3"
 gem "ancestry"
 gem "haml"
+gem "capistrano"
 
 group :production, :staging do
-  gem "mysql2", "0.2.7"
+  gem "mysql2", "~> 0.2.7"
 end
 
 group :development do
