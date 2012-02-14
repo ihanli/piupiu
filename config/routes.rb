@@ -1,7 +1,7 @@
 Piupiu::Application.routes.draw do
   root :to => "high_voltage/pages#show", :id => "index"
 
-  devise_for :users, :controllers => { :registrations => "registrations", :passwords => "passwords" } do
+  devise_for :users, :controllers => { :registrations => "registrations", :passwords => "passwords", :sessions => "sessions" } do
     delete "users/:id" => "registrations#destroy"
     get "users/sign_up" => "registrations#new"
     get "users" => "users#index", :as => :user_root
