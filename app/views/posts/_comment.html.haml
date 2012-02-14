@@ -1,5 +1,5 @@
 .container_pic
-  %img{ :src => @node.image.url(:original), :class => "big_pic" }
+  %img{ :src => @node.deleted? ? "/images/grabstein-19.png" : @node.image.url(:original), :class => "big_pic" }
   
 = form_for @post, :html => { :id => "comment_post", :class => " ", :multipart => "true" } do |f|
   = f.file_field :image
