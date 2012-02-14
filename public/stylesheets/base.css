@@ -33,10 +33,6 @@ a:active{
 	color:#999;
 }
 
-
-
-
-
 .master{
 	width:100%;
 	height:100%;
@@ -51,7 +47,7 @@ a:active{
 	height: 48px;
 }
 .oben{
-	position:absolute;
+	position: absolute;
 	top:60px;
 }
 .unten{
@@ -63,15 +59,13 @@ a:active{
 	bottom:10px;
 }
 .piupiu{
-	background-image:url(../images/piupiu-02.png);
-	position:absolute;
+	background-image: url(../images/piupiu-02.png);
+	position: absolute;
 	width:66px;
 	height:80px;
 	top:5px;
 	left:15px;
 }
-
-
 
 /* content formatierung*/
 .content{
@@ -97,12 +91,6 @@ a:active{
 }
 
 
-
-
-
-
-
-
 /* menubar formatierung*/
 .rahmen_profilbild{
 	background-image:url(../images/rahmen_profilbild-02.png);
@@ -119,16 +107,18 @@ a:active{
 }
 .rahmen_profilbild > img {
   position: relative;
-  top: 9px;
+  top: 10px;
   left: 6px;
   width: 64px;
+  height: 38px;
 }
+
 
 .aktiv{
 	background-position: 0px 70px;
 }
 .rahmen_profilbild.aktiv > img {
-  top:8px;
+  top:10px;
 }
 
 .overview_link{
@@ -199,9 +189,6 @@ a:active{
 .impressum:hover{
 	background-position: 0px 70px;
 }
-
-
-
 
 /*startseite icons */
 
@@ -315,12 +302,6 @@ a:active{
 	top:-40px;
 	left:440px;
 }
-
-
-
-
-
-
 
 /* untermenu fomratierung */
 
@@ -471,8 +452,6 @@ a:active{
 }
 
 
-
-
 /* Ansicht communication */
 .picture{
 	position:absolute;
@@ -528,12 +507,6 @@ a:active{
 .lupe:hover{
 	background-position: 0px 30px;
 }
-/*.picture #overlay_pictures{
-	display:none;
-}
-.picture:hover #overlay_pictures{
-	display:block;
-}*/
 .verbindung_rechts{
 	background-image:url(../images/verbindungspfeilrechts-09.png);
 	background-repeat:repeat-x;
@@ -544,8 +517,6 @@ a:active{
 	height:7px;
 	
 }
-
-
 
 
 /* zoom */
@@ -659,11 +630,6 @@ a:active{
 }
 
 
-
-
-
-
-
 /*signup formatierung*/
 #signupform td{
 	height:30px;
@@ -702,11 +668,6 @@ a:active{
 	background-position: 0px 70px;
 }
 
-
-
-
-
-
 /* profilseite content*/
 .rahmen_profilbild_gross{
 	background-image:url(../images/rahmen_gross-10.png);
@@ -718,7 +679,7 @@ a:active{
 }
 .rahmen_profilbild_gross img{
   position:relative;
-  top:9px;
+  top:10px;
   left: 11px;
 }
 .strichi_profil{
@@ -727,7 +688,7 @@ a:active{
 	background-repeat:no-repeat;
 	width:100%;
 	height:30px;
-	top:280px;
+	top:340px;
 	position:absolute;
 }
 .delete_profile{
@@ -773,35 +734,27 @@ a:active{
 }
 
 
-
-
-
-
 /* beispiel kommunikation*/
 
 .bsp_komm{
-	position:absolute;
+	position: absolute;
 	top:200px;
 	left:80px;
-	/*width:150px;
-	height:150px;*/
 }
 .profilbilder_overlay{
-	position:relative;
 	width:128px;
 	height:48px;
-	bottom:50px;
-	left:-20px;
 	border:2px solid black;
-	background-color: #FFF
+	background-color: #FFF;
+	bottom:30px;
+	left:-20px;
+	position: relative;
 }
 .creator_overlay{
   background-color:#999;
-	position:absolute;
-	left:0px;
-  top:0px;
 	width:64px;
 	height:48px;
+	float:left;
 }
 .creator_overlay img{
 	width:64px;
@@ -809,9 +762,7 @@ a:active{
 }
 .last_contributor_overlay{
   background-color:#333;
-	position:absolute;
-	top:0px;
-	right:0px;
+	clear:left;
 	width:64px;
 	height:48px;
 }
@@ -819,17 +770,10 @@ a:active{
 	width:64px;
 	height:48px;
 }
-.profilbilder_overlay{
-	display:none;
-}
-.bsp_komm > div{
-	width:166px;
-	height:148px;
-	margin-right:60px;
-	margin-bottom:50px;
-}
-a:hover + .profilbilder_overlay, a:hover + .profilbilder_overlay:hover, a + .profilbilder_overlay:hover{
-	display:block;
+div.last_contributor_overlay{
+	position: relative;
+	right: -64px;
+	top: -48px;
 }
 
 /* fehler seite*/
@@ -1100,13 +1044,14 @@ a:hover + .profilbilder_overlay, a:hover + .profilbilder_overlay:hover, a + .pro
 	width:100%;
 	height:100%;
 }
-.bsp_komm div{
+.bsp_komm > div{
 	float:left;
-	margin-bottom:75px;
+	margin-bottom:70px;
+	margin-right:120px;
 }
 
 .own_communications{
-  height:157px;
+  height:210px;
   overflow:auto;
   margin-left:255px;
   margin-top:110px;
@@ -1115,7 +1060,11 @@ a:hover + .profilbilder_overlay, a:hover + .profilbilder_overlay:hover, a + .pro
   height:320px;
   overflow:auto;
   margin-left: 255px;
-  margin-top: 60px;
+  margin-top: 100px;
+}
+.roots_of_comments > a, .own_communications > a{
+  margin-right: 70px;
+  margin-bottom: 70px;
 }
 
 #error_explanation {

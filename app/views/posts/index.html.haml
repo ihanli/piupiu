@@ -5,15 +5,15 @@
 
 .bsp_komm
   - @trees.each do |tree|
-    %a{ :href => post_path(tree.id) }
-      %div
+    %div
+      %a{ :href => post_path(tree.id) }
         %img{ :src => tree.deleted? ? "/images/grabstein-19.png" : tree.image.url(:medium) }
-        .profilbilder_overlay
-          %a{ :href => user_path(tree.creator), :class => "creator_overlay" }
-            %img{ :src => tree.creator.avatar.url(:icon) }
-      
-          - if tree.has_children?
-            %a{ :href => user_path(tree.last_contributor), :class => "last_contributor_overlay" }
-              %img{ :src => tree.last_contributor.avatar.url(:icon) }
-          - else
-            .last_contributor_overlay
+      .profilbilder_overlay
+        %a{ :href => user_path(tree.creator), :class => "creator_overlay" }
+          %img{ :src => tree.creator.avatar.url(:icon) }
+    
+        - if tree.has_children?
+          %a{ :href => user_path(tree.last_contributor), :class => "last_contributor_overlay" }
+            %img{ :src => tree.last_contributor.avatar.url(:icon) }
+        - else
+          .last_contributor_overlay
