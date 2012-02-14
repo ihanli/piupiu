@@ -31,7 +31,7 @@
   		intDelta > 0 ? map.zoomIn() : map.zoomOut();
   	});
 	
-  	$.getJSON("/posts/<%= @tree.root.id %>",
+  	$.getJSON("/posts/#{@tree.root.id}",
   	{
   		format: "json"
   	},
