@@ -5,7 +5,7 @@ function CommunicationMap(canvas)
 	if(!canvas)
 	{
 		top = $("#balken_oben").offset().top + $("#balken_oben").height();
-		height = $("#balken_unten").offset().top - top;
+		height = $(window).height() - top;
 
 		$("#canvas").css({"top":top,"left":"0"});
 		
@@ -28,7 +28,7 @@ function CommunicationMap(canvas)
 	var positionRelativeToParent = {x:0,y:0};
 	var nodeSize = {width:0,height:0};
 	var distanceFromParent = {x:0,y:0};
-	var gapFactor = 1.6;
+	var gapFactor = 1.4;
 	var maxComments = 5;
 	var zoom = 1.0;
 	
@@ -100,6 +100,7 @@ function CommunicationMap(canvas)
 			distanceFromParent.y = nodeSize.height * gapFactor;
 				
 			var line = paper.path("M" + (node.value.attr("x") + node.value.attr("width") / 2) + " " + (node.value.attr("y") + node.value.attr("height") / 2) + "L" + (node.value.attr("x") + distanceFromParent.x * positionRelativeToParent.x + node.comments[i].value.attr("width") / 2) + " " + (node.value.attr("y") + distanceFromParent.y * positionRelativeToParent.y + node.comments[i].value.attr("height") / 2) + "Z");
+			line.attr("stroke-dasharray", "--");
 			line.toBack();
 			edgeSet.push(line);
 		
