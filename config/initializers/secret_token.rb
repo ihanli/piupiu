@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Piupiu::Application.config.secret_token = 'cc15be1718f1b555a9e5e53c3d0c6ff5e5465738a6b33143c9bb49974a8fe30db0719186ef65928114d322ec62719fe42c901195a40439fc5f099502362e1dc3'
+Piupiu::Application.config.secret_token = 'b065c8cb429b9fdd9375579f34ccb3961bcd45b0d369c13a659012b1600506669cc96ef7e163520d1045953e4f688cffa1181baa208c28be50020e892c154c8f'
