@@ -4,16 +4,33 @@
 - if @posts
   .own_communications
     - @posts.each do |post|
-      %a{ :href => post_path(post.id) }
-        %img{ :src => post.deleted? ? "/images/grabstein-19.png" : post.image.url(:medium) }
+      %div
+        .profilbilder_overlay
+          %a{ :href => user_path(post.creator), :class => "creator_overlay" }
+            %img{ :src => post.creator.avatar.url(:icon) }
+      
+          - if post.has_children?
+            %a{ :href => user_path(post.last_contributor), :class => "last_contributor_overlay" }
+              %img{ :src => post.last_contributor.avatar.url(:icon) }
+          - else
+            .last_contributor_overlay
+        %a{ :href => post_path(post.id) }
+          %img{ :src => post.deleted? ? "/images/grabstein-19.png" : post.image.url(:medium) }
     
 .strichi_profil
 
 - if @comments
   .roots_of_comments
     - @comments.each do |comment|
-      %a{ :href => post_path(comment.root.id) }
-        %img{ :src => comment.root.deleted? ? "/images/grabstein-19.png" : comment.root.image.url(:medium) }
+      %div
+        .profilbilder_overlay
+          %a{ :href => user_path(comment.root.creator), :class => "creator_overlay" }
+            %img{ :src => comment.root.creator.avatar.url(:icon) }
+
+          %a{ :href => user_path(comment.root.last_contributor), :class => "last_contributor_overlay" }
+            %img{ :src => comment.root.last_contributor.avatar.url(:icon) }
+        %a{ :href => post_path(comment.root.id) }
+          %img{ :src => comment.root.deleted? ? "/images/grabstein-19.png" : comment.root.image.url(:medium) }
 
 - if @user == current_user
   = link_to "", page_path("delete_profile"), { :class => "delete_profile" }
