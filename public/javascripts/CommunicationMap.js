@@ -28,7 +28,7 @@ function CommunicationMap(canvas)
 	var positionRelativeToParent = {x:0,y:0};
 	var nodeSize = {width:0,height:0};
 	var distanceFromParent = {x:0,y:0};
-	var gapFactor = 1.4;
+	var gapFactor = 1.3;
 	var maxComments = 5;
 	var zoom = 1.0;
 	
