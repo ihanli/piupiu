@@ -1,3 +1,5 @@
+set :rvm_type, :system
+
 set :stages, %w(staging production)
 require 'capistrano/ext/multistage'
 
