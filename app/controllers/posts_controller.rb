@@ -30,8 +30,13 @@ class PostsController < ApplicationController
 
   def destroy
     render_optional_error_file(404) and return unless post = Post.find_by_id(params[:id])
-    
-    post.update_attribute(:deleted, true) ? redirect_to(post_path(post.root.id)) : (render_optional_error_file(418) and return)
+
+    if post.is_childless?
+      post.destroy
+      redirect_to posts_path
+    else
+      post.update_attribute(:deleted, true) ? redirect_to(post_path(post.root.id)) : (render_optional_error_file(418) and return)
+    end
   end
 
   def comment
