@@ -6,11 +6,9 @@
     = csrf_meta_tag
   %body
     #balken_oben.balken.oben      
-    = link_to "", user_signed_in? ? posts_path : root_path, { :class => "piupiu" }
+    = link_to "", posts_path, { :class => "piupiu" }
     
-    = link_to "", page_path("wtf"), :class => current_page?(:controller => "high_voltage/pages", :action => "show", :id => "wtf") ? ["wtf","aktiv"] : "wtf"
-    = link_to "", page_path("impressum"), :class => current_page?(:controller => "high_voltage/pages", :action => "show", :id => "impressum") ? ["impressum","aktiv"] : "impressum"
+    = link_to "", page_path("wtf"), :class => "wtf"
+    = link_to "", page_path("impressum"), :class => "impressum"
     
     = yield
-    
-    #balken_unten.balken.unten
