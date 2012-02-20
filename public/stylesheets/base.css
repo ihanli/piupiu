@@ -114,10 +114,10 @@ a:active{
 }
 
 
-.aktiv{
+.selected{
 	background-position: 0px 70px;
 }
-.rahmen_profilbild.aktiv > img {
+.rahmen_profilbild.selected > img {
   top:10px;
 }
 

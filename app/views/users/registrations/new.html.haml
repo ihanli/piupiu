@@ -4,7 +4,8 @@
     %br
     %br
     = devise_error_messages!
-    = "If you want to know what you are signing up for: #{link_to "wtf?", page_path("wtf")}"
+    = "If you want to know what you are signing up for: "
+    = link_to "wtf?", page_path("wtf")
     %br
     = "If your already know...just sign up ;)"
     %br
@@ -39,9 +40,9 @@
             = f.text_field :ido, :size => 39, :class => "feld"
       %br
       %span.text_klein
-        = "The information about your homecountry and what you do are not necessary. We are just curious who you are. ;)"
+        = "The information about your homecountry and what you do are not necessary. We are just curious who you are.;)"
         %br
-      	= "Every information you are giving us is not beeing used for anything than the piupiu comunity."
+        = "Every information you are giving us is not beeing used for anything than the piupiu comunity."
       %br
       %br
       %br

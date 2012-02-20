@@ -7,14 +7,8 @@ gem "paperclip", "~> 2.3"
 gem "ancestry"
 gem "haml"
 gem "capistrano"
-
-group :production, :staging do
-  gem "mysql2", "~> 0.2.7"
-end
-
-group :development do
-  gem "mysql"
-end
+gem "simple-navigation"
+gem "mysql2"
 
 group :test do
   gem "sqlite3"
