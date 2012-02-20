@@ -766,7 +766,7 @@ a:active{
 }
 .last_contributor_overlay{
   background-color:#333;
-	clear:left;
+	float:right;
 	width:64px;
 	height:48px;
 }

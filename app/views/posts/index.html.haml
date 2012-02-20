@@ -14,6 +14,6 @@
           %a{ :href => user_path(tree.last_contributor), :class => "last_contributor_overlay" }
             %img{ :src => tree.last_contributor.avatar.url(:icon) }
         - else
-          .last_contributor_overlay
+          %a.last_contributor_overlay
       %a{ :href => post_path(tree.id) }
         %img{ :src => tree.deleted? ? "/images/grabstein-19.png" : tree.image.url(:medium) }

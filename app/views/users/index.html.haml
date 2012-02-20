@@ -13,7 +13,7 @@
             %a{ :href => user_path(post.last_contributor), :class => "last_contributor_overlay" }
               %img{ :src => post.last_contributor.avatar.url(:icon) }
           - else
-            .last_contributor_overlay
+            %a.last_contributor_overlay
         %a{ :href => post_path(post.id) }
           %img{ :src => post.deleted? ? "/images/grabstein-19.png" : post.image.url(:medium) }
     
