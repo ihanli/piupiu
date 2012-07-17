@@ -3,7 +3,7 @@
   = link_to "", new_user_registration_path, :class => "start_signup"
   
   - if flash[:alert] == I18n.t("devise.failure.invalid")
-    %img{ :src => "/images/pw_falsch-17.png", :class => "pw_wrong" }
+    = image_tag "pw_falsch-17.png", :class => "pw_wrong"
   - else
     = flash[:alert]
     
