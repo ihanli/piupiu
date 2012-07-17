@@ -1081,6 +1081,7 @@ div.last_contributor_overlay{
 
 #error_explanation {
   margin-bottom: 30px;
+  color: #8B1A1A;
 }
 #error_explanation > h2 {
 	font-weight:normal;
