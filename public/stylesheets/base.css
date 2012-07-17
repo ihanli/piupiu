@@ -1085,3 +1085,11 @@ div.last_contributor_overlay{
 #error_explanation > h2 {
 	font-weight:normal;
 }
+
+.piupiu_link{
+  text-decoration: underline;
+}
+
+.piupiu_link:hover{
+  color: #c0c0c0;
+}
