@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :posts, :dependent => :destroy
   validates_attachment_presence :avatar, { :message => "has to be drawn" }
+  validates_attachment_size :avatar, :less_than => 5.megabytes
 
   attr_accessor :image_data
   attr_accessible :email, :password, :password_confirmation, :reset_password_token, :country, :ido, :avatar, :image_data

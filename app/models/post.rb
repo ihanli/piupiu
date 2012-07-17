@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :user
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates_attachment_size :image, :less_than => 5.megabytes
 
   belongs_to :user
 
