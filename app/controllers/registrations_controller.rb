@@ -12,8 +12,6 @@ class RegistrationsController < Devise::RegistrationsController
       render "users/registrations/password"
     elsif params[:page] == "avatar"
       render "users/registrations/avatar"
-    else
-      render_optional_error_file(404) and return
     end
   end
 
@@ -25,8 +23,8 @@ class RegistrationsController < Devise::RegistrationsController
       sign_in resource_name, resource, :bypass => true
       redirect_to after_update_path_for(resource)
     else
-      clean_up_passwords(resource)
-      render_optional_error_file(500) and return
+      clean_up_passwords resource
+      render(:file => "#{Rails.root}/public/500.html", :status => 500) and return
     end
   end
 
@@ -40,15 +38,15 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_inactive_sign_up_path_for(resource)
-    page_path("check_mail")
+    page_path "check_mail"
   end
 
   def after_delete_account_path_for(resource)
-    page_path("profile_deleted")
+    page_path "profile_deleted"
   end
 
   def get_countries_array
     @countries_array = Country.all.map { |country| [country.fullname, country.abbreviation] }
-    render_optional_error_file(500) and return unless @countries_array.count > 0
+    render(:file => "#{Rails.root}/public/500.html", :status => 500) and return unless @countries_array.count > 0
   end
 end

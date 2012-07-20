@@ -1,6 +1,6 @@
 class PasswordsController < Devise::PasswordsController
   def create
-    self.resource = resource_class.send_reset_password_instructions(params[resource_name])
+    self.resource = resource_class.send_reset_password_instructions params[resource_name]
 
     if resource.errors.empty?
       set_flash_message(:notice, :send_instructions) if is_navigational_format?
@@ -13,6 +13,6 @@ class PasswordsController < Devise::PasswordsController
   protected
 
   def after_sending_reset_password_instructions_path_for(resource_name)
-    page_path("check_mail")
+    page_path "check_mail"
   end
 end
