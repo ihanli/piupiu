@@ -16,10 +16,20 @@
         $("#post_submit").addClass("disabled");
       }
     });
+
+    $("#post_image").fileupload({
+      url: "/users/#{current_user.id}/attachement_upload",
+      type: "POST",
+      dataType: "json",
+      done: function(e, data){
+        $("#preview").attr("src", data.result.filepath);
+      }
+    });
   });
 
 
 = form_for @post, :html => { :class => "container_new_post", :multipart => "true" } do |f|
+  %img#preview
   = f.file_field :image
   = button_to_function "", "$('#post_image').trigger('click'); return true", :class => "durchsuchen", :style => "visibility:hidden"
   = f.submit "", :class => "submit_new_post"

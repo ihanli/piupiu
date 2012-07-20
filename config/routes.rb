@@ -8,7 +8,9 @@ Piupiu::Application.routes.draw do
     get "users/sign_in" => redirect("/")
   end
 
-  resources :users
+  resources :users do
+      post "attachement_upload" => "users#attachement_upload"
+  end
 
   resources :posts do
     get "comment" => "posts#comment"

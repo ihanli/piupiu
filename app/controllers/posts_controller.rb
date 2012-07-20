@@ -22,9 +22,24 @@ class PostsController < ApplicationController
   end
 
   def create
-    render_optional_error_file(500) and return unless params[:post]
-    post = Post.new(:user => current_user, :image => params[:post][:image])
-    render_optional_error_file(500) and return unless post.set_ancestor(params[:post][:ancestry]) if params[:post][:ancestry]
+    post = Post.new :user => current_user
+
+    if params[:post]
+      post.image = params[:post][:image]
+      post.set_ancestor params[:post][:ancestry]
+    else
+      tmp_dir_path = "#{Rails.root}/public/system/#{current_user.id}/tmp"
+  
+      if File.directory? tmp_dir_path
+        Dir.foreach(tmp_dir_path) do |f|
+          next if f == "." || f == ".."
+          post.image = File.open "#{tmp_dir_path}/#{f}"
+          fn = File.join tmp_dir_path, f
+          File.delete fn
+        end
+      end
+    end
+
     post.save ? redirect_to(post_path(post.root.id)) : render_optional_error_file(418) and return
   end
 
