@@ -642,7 +642,7 @@ a:active{
 	height:70px;
 	overflow:hidden;
 	left:430px;
-	bottom:5px;
+	bottom:55px;
 	background-color:#FFF;
 	border:none;
 }
@@ -653,6 +653,7 @@ a:active{
  	width:330px;
 	height:240px;
 	border: 2px solid black;
+  margin-bottom: 50px;
 }
 .reset_processing{
 	background-image:url(../images/delete-02.png);
@@ -662,7 +663,7 @@ a:active{
 	height:70px;
 	overflow:hidden;
 	left:340px;
-	bottom:5px;
+	bottom:55px;
 }
 .reset_processing:hover{
 	background-position: 0px 70px;
