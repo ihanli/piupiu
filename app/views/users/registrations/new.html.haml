@@ -46,7 +46,7 @@
       %br
       %p
         = f.check_box :terms_of_use
-        = f.label :terms_of_use, "I accept the terms of use on this website.", :style => "vertical-align:middle"
+        = f.label :terms_of_use, "I accept the #{link_to('terms of use', '/pages/impressum#terms-of-use', :class => 'piupiu_link')} on this website.".html_safe, :style => "vertical-align:middle"
       %br
       %br
       = "Your profile picture has to be drawn into following field."
