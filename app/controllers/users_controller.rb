@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def attachement_upload
     tmp_file = "#{Rails.root}/public/system/#{current_user.id}/tmp/#{params[:post][:image].original_filename}"
     FileUtils.mv params[:post][:image].tempfile.path, tmp_file
+    File.chmod 0644, tmp_file
     render :json => {"filepath" => "/system/#{current_user.id}/tmp/#{params[:post][:image].original_filename}"}
   end
 
