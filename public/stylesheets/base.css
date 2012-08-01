@@ -1074,8 +1074,9 @@ div.last_contributor_overlay{
 }
 .roots_of_comments > div, .own_communications > div{
   margin-left:60px;
+  margin-bottom: 100px;
   float: left;
-	height:200px;
+  height:200px;
 	width:200px;
 }
 
@@ -1093,4 +1094,18 @@ div.last_contributor_overlay{
 
 .piupiu_link:hover{
   color: #c0c0c0;
+}
+
+#loader{
+  position: absolute;
+  left: 48px;
+}
+
+#preview{
+  position: absolute;
+  display: none;
+  left: -15px;
+  top: -35px;
+  width: 200px;
+  height: 200px;
 }

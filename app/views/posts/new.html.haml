@@ -7,14 +7,7 @@
     $("#post_image").css("visibility", "hidden");
   
     $("#post_image").change(function(){
-      if($(this).val()){
-        $("#post_submit").removeAttr("disabled");
-        $("#post_submit").removeClass("disabled");
-      }
-      else{
-        $("#post_submit").prop("disabled", true);
-        $("#post_submit").addClass("disabled");
-      }
+      $("#loader").show();
     });
 
     $("#post_image").fileupload({
@@ -22,7 +15,10 @@
       type: "POST",
       dataType: "json",
       done: function(e, data){
-        $("#preview").attr("src", data.result.filepath);
+        $("#loader").hide();
+        $("#preview").show().attr("src", data.result.filepath);
+        $("#post_submit").removeAttr("disabled");
+        $("#post_submit").removeClass("disabled");
       }
     });
   });
@@ -30,6 +26,7 @@
 
 = form_for @post, :html => { :class => "container_new_post", :multipart => "true" } do |f|
   %img#preview
+  = image_tag "loading.gif", :id => "loader", :style => "display:none"
   = f.file_field :image
   = button_to_function "", "$('#post_image').trigger('click'); return true", :class => "durchsuchen", :style => "visibility:hidden"
   = f.submit "", :class => "submit_new_post"
