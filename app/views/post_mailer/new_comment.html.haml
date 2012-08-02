@@ -1,0 +1,14 @@
+!!! html5
+%html
+  %head
+    %meta{:charset => "utf-8"}
+
+  %body
+    %p
+      = "Hi,"
+      %br
+      %br
+      = "someone answered your post on piupiu.at :)"
+      %br
+      %br
+      = "Check out here: #{link_to post_url(@post.root), post_url(@post.root)}".html_safe

@@ -40,18 +40,18 @@ class PostsController < ApplicationController
       end
     end
 
-    redirect_to post_path(post.root.id) if post.save
+    if post.save
+      PostMailer.new_comment(post, post.root.user.email).deliver
+      PostMailer.new_comment(post, post.parent.user.email).deliver if post.parent
+      redirect_to post_path(post.root.id)
+    end
   end
 
   def destroy
     post = Post.find_by_id params[:id]
 
-    if post.is_childless?
-      post.destroy
-      redirect_to posts_path
-    else
-      redirect_to post_path(post.root.id) if post.update_attribute(:deleted, true)
-    end
+    post.is_childless? ? post.destroy : post.update_attribute(:deleted, true)
+    post.is_root? ? redirect_to(posts_path) : redirect_to(post_path(post.root.id))
   end
 
   def comment
