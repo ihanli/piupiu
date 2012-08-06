@@ -15,5 +15,6 @@ Piupiu::Application.routes.draw do
   resources :posts do
     get "comment" => "posts#comment"
     get "download" => "posts#download"
+    post "report" => "posts#report"
   end
 end

@@ -11,9 +11,17 @@
 
 - if @node.user.id == current_user.id && !@node.deleted?
   = button_to "", { :action => "destroy", :id => @node.id }, :method => "delete", :class => "delete_pic"
+- elsif @node.user.id != current_user.id && !@node.deleted?
+  = link_to "", "#report", :class => "report_pic", :rel => "facebox"
   
 :javascript
   $(document).ready(function(){
+    $("a[rel*=facebox].report_pic").facebox({
+      loadingImage : "/images/loading.gif",
+      closeImage   : "/images/closelabel.png"
+    });
+
+    $("#report form").attr("action", "/posts/#{@node.id}/report");
     
     $("#post_submit").prop("disabled", true);
     $("#post_submit").addClass("disabled");

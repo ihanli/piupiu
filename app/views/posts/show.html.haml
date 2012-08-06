@@ -5,7 +5,7 @@
 	
   	$(window).resize(function(){
   		var top = $("#balken_oben").offset().top + $("#balken_oben").height();
-  		var height = $("#balken_unten").offset().top - top;
+  		var height = $(window).height() - top;
   		$("#canvas > svg").attr({"height":height,"width":$(".plus_zoom").offset().left});
   	});
 	
@@ -65,3 +65,8 @@
 #overlay_pictures
   %a{ :href => "" }
     %img.creator_overlay
+
+#report{ :style => "display:none;" }
+  = form_for(:post, :as => :post, :url => "", :html => { :method => :post }) do |f|
+    = f.submit "", :class => "thumb_up", :id => "report_submit"
+    = link_to "", post_path(@tree.id), :class => "thumb_down"

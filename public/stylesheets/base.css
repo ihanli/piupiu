@@ -413,6 +413,18 @@ a:active{
 .delete_pic:hover{
 	background-position: 0px 70px;
 }
+.report_pic{
+  background-image:url(../images/BeitragMelden-14.png);
+  cursor:pointer;
+  position:absolute;
+  width:80px;
+  height:70px;
+  overflow:hidden;
+  bottom:15px;
+  right:90px;
+  background-color:#FFF;
+  border:none;
+}
 .submit_popup{
 	background-image:url(../images/submit_button-02.png);
 	cursor:pointer;

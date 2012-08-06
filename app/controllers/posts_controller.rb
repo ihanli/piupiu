@@ -64,4 +64,11 @@ class PostsController < ApplicationController
     file = Post.find_by_id params[:post_id]
     send_file "#{Rails.root.to_s}/public#{file.image.url(:original, false)}"
   end
+
+  def report
+    post = Post.find_by_id params[:post_id]
+    PostMailer.acknowledge_report(current_user.email).deliver
+    PostMailer.report_post(post, current_user.email).deliver
+    redirect_to post_path(post.root.id)
+  end
 end
