@@ -1,8 +1,4 @@
 Piupiu::Application.routes.draw do
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   root :to => "high_voltage/pages#show", :id => "index"
 
   devise_for :users, :controllers => { :registrations => "registrations", :passwords => "passwords", :sessions => "sessions" } do
