@@ -15,6 +15,10 @@
     = javascript_include_tag "jquery.iframe-transport"
     = csrf_meta_tag
   %body
+    %noscript.noscript_overlay
+      .noscript_message
+        = image_tag "JSeinschalten-22.png"
+
     #balken_oben.balken.oben      
     = link_to "", user_signed_in? ? posts_path : root_path, { :class => "piupiu" }
     
