@@ -9,6 +9,7 @@ gem "haml"
 gem "capistrano"
 gem "simple-navigation"
 gem "mysql2"
+gem "activeadmin"
 
 group :test do
   gem "sqlite3"
